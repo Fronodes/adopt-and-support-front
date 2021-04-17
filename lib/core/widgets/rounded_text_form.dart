@@ -21,14 +21,14 @@ class _RoundedTextFormState extends State<RoundedTextForm> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: TextFormDeco().loginDeco(
-          context, widget.hintText, prefixIcon(context), suffixIcon(context)),
-      onChanged: (val) {
-        widget.save(val, isPassword());
-      },
-      obscureText: isPassword() && !showPassword ? true : false,
-      validator: validationFunction,
-    );
+        // decoration: TextFormDeco().loginDeco(
+        //     context, widget.hintText, prefixIcon(context), suffixIcon(context)),
+        // onChanged: (val) {
+        //   widget.save(val, isPassword());
+        // },
+        // obscureText: isPassword() && !showPassword ? true : false,
+        // validator: validationFunction,
+        );
   }
 
   Widget prefixIcon(BuildContext context) {

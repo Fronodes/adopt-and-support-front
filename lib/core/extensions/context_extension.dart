@@ -24,12 +24,17 @@ extension ThemeExtension on BuildContext {
   Color get primary => theme.primaryColor;
   Color get canvas => theme.canvasColor;
   TextStyle get headline1 =>
-      theme.textTheme.headline1!.copyWith(fontSize: fontSize * 4.6);
-  TextStyle get headline2 => theme.textTheme.headline2 ?? defaultTextStyle;
-  TextStyle get headline3 => theme.textTheme.headline3 ?? defaultTextStyle;
-  TextStyle get headline4 => theme.textTheme.headline4 ?? defaultTextStyle;
-  TextStyle get headline5 => theme.textTheme.headline5 ?? defaultTextStyle;
-  TextStyle get headline6 => theme.textTheme.headline6 ?? defaultTextStyle;
+      theme.textTheme.headline1!.copyWith(fontSize: fontSize * 4.1);
+  TextStyle get headline2 =>
+      theme.textTheme.headline2!.copyWith(fontSize: fontSize * 3.4);
+  TextStyle get headline3 =>
+      theme.textTheme.headline3!.copyWith(fontSize: fontSize * 3);
+  TextStyle get headline4 =>
+      theme.textTheme.headline4!.copyWith(fontSize: fontSize * 2.4);
+  TextStyle get headline5 =>
+      theme.textTheme.headline5!.copyWith(fontSize: fontSize * 2);
+  TextStyle get headline6 =>
+      theme.textTheme.headline6!.copyWith(fontSize: fontSize * 1.8);
 }
 
 extension DurationExtension on BuildContext {
@@ -68,10 +73,10 @@ extension SymmetricPaddingExtension on BuildContext {
   EdgeInsets get verticalHigh => EdgeInsets.symmetric(vertical: high);
   EdgeInsets get verticalExtreme => EdgeInsets.symmetric(vertical: extreme);
 
-  EdgeInsets get horizontalLow => EdgeInsets.symmetric(vertical: low);
-  EdgeInsets get horizontalMedium => EdgeInsets.symmetric(vertical: medium);
-  EdgeInsets get horizontalHigh => EdgeInsets.symmetric(vertical: high);
-  EdgeInsets get horizontalExtreme => EdgeInsets.symmetric(vertical: extreme);
+  EdgeInsets get horizontalLow => EdgeInsets.symmetric(horizontal: low);
+  EdgeInsets get horizontalMedium => EdgeInsets.symmetric(horizontal: medium);
+  EdgeInsets get horizontalHigh => EdgeInsets.symmetric(horizontal: high);
+  EdgeInsets get horizontalExtreme => EdgeInsets.symmetric(horizontal: extreme);
 
   EdgeInsets get lowSymmetric =>
       EdgeInsets.symmetric(horizontal: low, vertical: low);
@@ -99,7 +104,7 @@ extension RightPaddingExtension on BuildContext {
 
 extension TopPaddingExtension on BuildContext {
   EdgeInsets get topLow => EdgeInsets.only(top: low);
-  EdgeInsets get topMedium => EdgeInsets.only(top: medium);
+  EdgeInsets get topMedium => EdgeInsets.only(top: medium * 1.4);
   EdgeInsets get topHigh => EdgeInsets.only(top: high);
   EdgeInsets get topExtreme => EdgeInsets.only(top: extreme);
 }

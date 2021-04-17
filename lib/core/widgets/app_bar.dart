@@ -2,47 +2,44 @@ import 'package:flutter/material.dart';
 
 import '../core_shelf.dart';
 
-PreferredSize getAppBar(BuildContext context, String title) {
+PreferredSize getAppBar(BuildContext context, String title, {Widget? icon}) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(context.height * 8),
+    preferredSize: Size.fromHeight(context.height * 6.6),
     child: AppBar(
       backgroundColor: context.canvas,
       brightness: Brightness.light,
-      flexibleSpace: mainContainer(context, title),
+      flexibleSpace: mainContainer(context, title, icon: icon),
       automaticallyImplyLeading: false,
     ),
   );
 }
 
-Widget mainContainer(BuildContext context, String title) {
-  return Container(
-    alignment: Alignment.bottomCenter,
-    padding: context.leftMedium,
+Widget mainContainer(BuildContext context, String title, {Widget? icon}) {
+  return Padding(
+    padding: context.bottomLow,
     child: Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(
           child: Image(
             image: 'logo'.pngLogoAsset,
-            width: context.width * 12,
-            fit: BoxFit.fitWidth,
+            height: context.height * 4.2,
           ),
         ),
         Expanded(flex: 2, child: screenText(context, title)),
-        Expanded(child: Container())
+        Expanded(child: icon ?? Container())
       ],
     ),
   );
 }
 
 Widget screenText(BuildContext context, title) {
-  return Expanded(
-    child: Padding(
-      padding: context.topLow,
-      child: Text(
-        getText(title),
-        style: context.headline3,
-        textAlign: TextAlign.center,
-      ),
+  return Padding(
+    padding: context.topLow,
+    child: Text(
+      title,
+      style: context.headline1.copyWith(fontWeight: FontWeight.w600),
+      textAlign: TextAlign.center,
     ),
   );
 }

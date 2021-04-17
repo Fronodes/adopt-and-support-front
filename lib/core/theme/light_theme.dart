@@ -81,17 +81,17 @@ final ThemeData lightTheme = ThemeData(
       fontStyle: FontStyle.normal,
     ),
     headline2: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xffee791a),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline3: TextStyle(
-      color: Colors.white.withOpacity(.9),
-      fontWeight: FontWeight.w600,
+      color: Color(0xffee791a),
+      fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline4: TextStyle(
-      color: Colors.black87,
+      color: Color(0xffee791a),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
@@ -101,7 +101,7 @@ final ThemeData lightTheme = ThemeData(
       fontStyle: FontStyle.normal,
     ),
     headline6: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xffee791a),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
@@ -136,6 +136,7 @@ final ThemeData lightTheme = ThemeData(
         color: Color(0xdd000000),
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
+        fontSize: 13,
         letterSpacing: 1),
     helperStyle: TextStyle(
       color: Color(0xdd000000),

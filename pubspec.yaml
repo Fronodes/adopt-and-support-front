@@ -20,6 +20,7 @@ dependencies:
   animations: ^2.0.0
   json_serializable: ^4.1.0
   json_annotation: ^4.0.1
+  flutter_svg: ^0.21.0+1
 
 dev_dependencies:
   flutter_test:
@@ -34,3 +35,4 @@ flutter:
     - assets/lang/
     - assets/images/
     - assets/logo/
+    - assets/svg/
