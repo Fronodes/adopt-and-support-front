@@ -20,8 +20,9 @@ class BoxDeco {
           offset: Offset(.8, 1.9),
           blurRadius: 12,
           spreadRadius: 2,
-          color:
-              selected ? context.primary.withOpacity(.3) : Colors.transparent,
+          color: selected
+              ? context.primary.withOpacity(.3)
+              : Colors.black.withOpacity(.1),
         ),
       ],
       borderRadius: BorderRadius.circular(16),
