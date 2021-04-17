@@ -15,10 +15,10 @@ class NavigationRoute {
     switch (args.name) {
       case NavigationConstants.home:
         return normalNavigate(HomeScreen());
-        case NavigationConstants.createNewAdopted:
+      case NavigationConstants.createNewAdopted:
         return normalNavigate(CreateNewAdopted());
       default:
-        return normalNavigate(CreateNewAdopted());
+        return normalNavigate(HomeScreen());
     }
   }
 
