@@ -8,28 +8,35 @@ class PetItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: context.width * 4),
-      width: context.width * 50,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(child: getPhoto(context)),
-          SizedBox(height: context.height * 1.2),
-          getPetName(context),
-          SizedBox(height: context.height * .4),
-          getInfoRow(context)
-        ],
+    return InkWell(
+      onTap: () => NavigationService.instance
+          .navigateToPage(path: NavigationConstants.petDetail),
+      child: Container(
+        margin: EdgeInsets.only(right: context.width * 4),
+        width: context.width * 50,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(child: getPhoto(context)),
+            SizedBox(height: context.height * 1.2),
+            getPetName(context),
+            SizedBox(height: context.height * .4),
+            LocationRow(text: pet.summary)
+          ],
+        ),
       ),
     );
   }
 
   Widget getPhoto(BuildContext context) {
-    return ClipRRect(
-      borderRadius: context.highCircular,
-      child: Image.network(
-        pet.photoUrls[0],
-        fit: BoxFit.fitHeight,
+    return Hero(
+      tag: pet.photoUrls[0],
+      child: ClipRRect(
+        borderRadius: context.highCircular,
+        child: Image.network(
+          pet.photoUrls[0],
+          fit: BoxFit.fitWidth,
+        ),
       ),
     );
   }
@@ -45,22 +52,9 @@ class PetItem extends StatelessWidget {
     );
   }
 
-  Widget getInfoRow(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          Icons.navigation,
-          color: Colors.green[300],
-          size: context.width * 3.6,
-        ),
-        SizedBox(width: context.width * .8),
-        Text(
-          pet.summary,
-          style: context.headline5.copyWith(
-            color: Colors.black45,
-          ),
-        ),
-      ],
-    );
+  Future<void> navigateToDetail() async {
+    //TODO: Get by id
+    NavigationService.instance
+        .navigateToPage(path: NavigationConstants.petDetail);
   }
 }

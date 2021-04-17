@@ -15,6 +15,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
     Address.fromJson(json['address'] as Map<String, dynamic>),
     json['mail'] as String,
     json['photoUrl'] as String,
+    (json['favorites'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
@@ -26,4 +27,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'address': instance.address,
       'mail': instance.mail,
       'photoUrl': instance.photoUrl,
+      'favorites': instance.favorites,
     };

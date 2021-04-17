@@ -1,7 +1,10 @@
 export './alert_dialog/custom_dialog.dart';
 export './alert_dialog/default_popup_text.dart';
 export './app_bar.dart';
+export './bottom_navigation_bar/bottom_navigation_bar.dart';
 export './default_icon.dart';
 export './divider.dart';
+export './location_row.dart';
 export './rounded_button.dart';
 export './rounded_card.dart';
+export './sliding_page.dart';

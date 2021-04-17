@@ -11,13 +11,12 @@ Pet getDummyPet() {
     10,
     'Summary will be here',
     User(
-      '2',
-      'Person',
-      'Here',
-      '10310321',
-      Address('cadde', 'mahalle', 'fatih', 'istanbul'),
-      'mail.com',
-      'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-    ),
+        '2',
+        'Person',
+        'Here',
+        '10310321',
+        Address('cadde', 'mahalle', 'fatih', 'istanbul'),
+        'mail.com',
+        'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg', []),
   );
 }

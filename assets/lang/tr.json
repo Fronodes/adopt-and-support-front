@@ -10,5 +10,10 @@
   "cats": "Kediler",
   "dogs": "Köpekler",
   "friends": "Arkadaşlar",
-  "see_all": "Tümünü Gör"
+  "see_all": "Tümünü Gör",
+  "gender": "Cinsiyet",
+  "age": "Yaş",
+  "weight": "Kilo",
+  "summary": "Açıklama",
+  "contact_person": "İletişim"
 }

@@ -15,18 +15,43 @@ class PetProvider extends ChangeNotifier {
       10,
       'Summary will be here',
       User(
+          '2',
+          'Person',
+          'Here',
+          '10310321',
+          Address('cadde', 'mahalle', 'fatih', 'istanbul'),
+          'mail.com',
+          'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg', []),
+    )
+  ];
+  Pet? selectedPet = Pet(
+    '1',
+    'Kedi',
+    [
+      'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
+      'https://i.ytimg.com/vi/jHWKtQHXVJg/maxresdefault.jpg',
+      'https://i.guim.co.uk/img/media/8a13052d4db7dcd508af948e5db7b04598e03190/0_294_5616_3370/master/5616.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=bcaa4eed2c1e6dab61c41a61e41433d9'
+    ],
+    'Cat',
+    'Male',
+    2,
+    10,
+    'Summary will be here',
+    User(
         '2',
         'Person',
         'Here',
         '10310321',
         Address('cadde', 'mahalle', 'fatih', 'istanbul'),
         'mail.com',
-        'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-      ),
-    )
-  ];
+        'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg', []),
+  );
 
   Future<List<Pet>> searchPet() async {
     return pets;
+  }
+
+  Pet getSelectedPet() {
+    return selectedPet!;
   }
 }

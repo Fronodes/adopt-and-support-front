@@ -21,5 +21,10 @@
 	"select_gender": "Select Gender*",
 	"fill_all_required": "Please fill all required areas",
 	"male": "Male",
-	"female": "Female"
+	"female": "Female",
+	"gender": "Gender",
+	"age": "Age",
+	"weight": "Weight",
+	"summary": "Summary",
+	"contact_person": "Contact"
 }

@@ -65,12 +65,7 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(
-        context,
-        'add_new'.translate,
-        icon: IconButton(
-            icon: Icon(Icons.close), onPressed: () => Navigator.pop(context)),
-      ),
+      appBar: getAppBar(context, 'add_new'.translate, 'close'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
-  primarySwatch: MaterialColor(4293818650, {
-    50: Color(0xfffdf1e7),
-    100: Color(0xfffbe3d0),
-    200: Color(0xfff8c7a0),
-    300: Color(0xfff4ac71),
-    400: Color(0xfff19041),
-    500: Color(0xffed7412),
-    600: Color(0xffbe5d0e),
-    700: Color(0xff8e460b),
-    800: Color(0xff5f2e07),
-    900: Color(0xff2f1704)
+  primarySwatch: MaterialColor(4283071916, {
+    50: Color(0xffedf2f7),
+    100: Color(0xffdbe6f0),
+    200: Color(0xffb8cde0),
+    300: Color(0xff94b4d1),
+    400: Color(0xff709bc2),
+    500: Color(0xff4d82b2),
+    600: Color(0xff3d688f),
+    700: Color(0xff2e4e6b),
+    800: Color(0xff1f3447),
+    900: Color(0xff0f1a24)
   }),
   brightness: Brightness.light,
-  primaryColor: Color(0xffee791a),
+  primaryColor: Color(0xff4a7dac),
   primaryColorBrightness: Brightness.dark,
-  primaryColorLight: Color(0xfffbe3d0),
-  primaryColorDark: Color(0xff8e460b),
-  accentColor: Color(0xffed7412),
+  primaryColorLight: Color(0xffdbe6f0),
+  primaryColorDark: Color(0xff2e4e6b),
+  accentColor: Color(0xffffc464),
   accentColorBrightness: Brightness.dark,
   canvasColor: Color(0xfffafafa),
   scaffoldBackgroundColor: Color(0xfffafafa),
@@ -31,12 +31,12 @@ final ThemeData lightTheme = ThemeData(
   unselectedWidgetColor: Color(0x8a000000),
   disabledColor: Color(0x61000000),
   buttonColor: Color(0xffe0e0e0),
-  toggleableActiveColor: Color(0xffbe5d0e),
-  secondaryHeaderColor: Color(0xfffdf1e7),
-  backgroundColor: Color(0xfff8c7a0),
+  toggleableActiveColor: Color(0xff3d688f),
+  secondaryHeaderColor: Color(0xffedf2f7),
+  backgroundColor: Color(0xffb8cde0),
   dialogBackgroundColor: Color(0xffffffff),
-  indicatorColor: Color(0xffed7412),
-  hintColor: Color(0x8a000000),
+  indicatorColor: Color(0xff4d82b2),
+  hintColor: Color(0x99000000),
   errorColor: Color(0xffd32f2f),
   buttonTheme: ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
@@ -59,12 +59,12 @@ final ThemeData lightTheme = ThemeData(
     focusColor: Color(0x1f000000),
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
-      primary: Color(0xffee791a),
-      primaryVariant: Color(0xff8e460b),
-      secondary: Color(0xffed7412),
-      secondaryVariant: Color(0xff8e460b),
+      primary: Color(0xff4a7dac),
+      primaryVariant: Color(0xff2e4e6b),
+      secondary: Color(0xff4d82b2),
+      secondaryVariant: Color(0xff2e4e6b),
       surface: Color(0xffffffff),
-      background: Color(0xfff8c7a0),
+      background: Color(0xffb8cde0),
       error: Color(0xffd32f2f),
       onPrimary: Color(0xffffffff),
       onSecondary: Color(0xffffffff),
@@ -76,34 +76,24 @@ final ThemeData lightTheme = ThemeData(
   ),
   textTheme: TextTheme(
     headline1: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w800,
+      color: Color(0xff4a7dac),
+      fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
     ),
     headline2: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
+      color: Color(0xff4a7dac),
     ),
     headline3: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
+      color: Color(0xff4a7dac),
     ),
     headline4: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
+      color: Color(0xff4a7dac),
     ),
     headline5: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
+      color: Color(0xff4a7dac),
     ),
     headline6: TextStyle(
-      color: Color(0xffee791a),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
+      color: Color(0xff4a7dac),
     ),
     caption: TextStyle(
       color: Color(0x8a000000),
@@ -115,45 +105,69 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
-    subtitle1: TextStyle(
-      color: Color(0xff000000),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    subtitle2: TextStyle(
-      color: Color(0xff000000),
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
     overline: TextStyle(
       color: Color(0xff000000),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
   ),
+  primaryTextTheme: TextTheme(
+    caption: TextStyle(
+      color: Color(0xb3ffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+    button: TextStyle(
+      color: Color(0xffffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+    overline: TextStyle(
+      color: Color(0xffffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+  ),
+  accentTextTheme: TextTheme(
+    caption: TextStyle(
+      color: Color(0xb3ffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+    button: TextStyle(
+      color: Color(0xffffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+    overline: TextStyle(
+      color: Color(0xffffffff),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: TextStyle(
-        color: Color(0xdd000000),
-        fontWeight: FontWeight.w400,
-        fontStyle: FontStyle.normal,
-        fontSize: 13,
-        letterSpacing: 1),
+      color: Color(0xdd000000),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
     helperStyle: TextStyle(
       color: Color(0xdd000000),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     hintStyle: TextStyle(
-        color: Color(0xdd000000).withOpacity(.7),
-        fontWeight: FontWeight.w300,
-        fontStyle: FontStyle.normal,
-        letterSpacing: .4),
+      color: Color(0xdd000000),
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
+    ),
     errorStyle: TextStyle(
       color: Color(0xdd000000),
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     isDense: false,
+    contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
     isCollapsed: false,
     prefixStyle: TextStyle(
       color: Color(0xdd000000),
@@ -224,14 +238,17 @@ final ThemeData lightTheme = ThemeData(
   iconTheme: IconThemeData(
     color: Color(0xdd000000),
     opacity: 1,
+    size: 24,
   ),
   primaryIconTheme: IconThemeData(
     color: Color(0xffffffff),
     opacity: 1,
+    size: 24,
   ),
   accentIconTheme: IconThemeData(
-    color: Color(0xffBDBDBD),
+    color: Color(0xffffffff),
     opacity: 1,
+    size: 24,
   ),
   sliderTheme: SliderThemeData(
     valueIndicatorTextStyle: TextStyle(
@@ -250,26 +267,22 @@ final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     deleteIconColor: Color(0xde000000),
     disabledColor: Color(0x0c000000),
-    labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 8, right: 8),
+    labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
     labelStyle: TextStyle(
       color: Color(0xde000000),
+      fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     padding: EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 4),
     secondaryLabelStyle: TextStyle(
       color: Color(0x3d000000),
+      fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
-    secondarySelectedColor: Color(0x3dee791a),
+    secondarySelectedColor: Color(0x3d4a7dac),
     selectedColor: Color(0x3d000000),
-    shape: StadiumBorder(
-        side: BorderSide(
-      color: Color(0xff000000),
-      width: 0,
-      style: BorderStyle.none,
-    )),
   ),
   dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(
