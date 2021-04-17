@@ -18,11 +18,14 @@ dependencies:
   shared_preferences: ^2.0.5
   provider: ^5.0.0
   animations: ^2.0.0
+  json_serializable: ^4.1.0
+  json_annotation: ^4.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.11.0
+  build_runner: ^1.12.2
 
 flutter:
   uses-material-design: true
