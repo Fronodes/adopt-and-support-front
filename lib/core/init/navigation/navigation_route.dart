@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../views/home/home_screen.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
