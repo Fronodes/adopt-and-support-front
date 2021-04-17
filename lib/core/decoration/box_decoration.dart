@@ -12,13 +12,15 @@ class BoxDeco {
 
   BoxDecoration typeItemDeco(BuildContext context, bool selected) {
     return BoxDecoration(
-      color: selected ? Colors.white : Colors.white.withOpacity(.85),
+      color: selected
+          ? Colors.white.withOpacity(.58)
+          : Colors.white.withOpacity(.96),
       boxShadow: [
         BoxShadow(
           offset: Offset(.8, 1.9),
           blurRadius: 2.8,
           spreadRadius: 2.3,
-          color: selected ? context.primary.withOpacity(.3) : Colors.black26,
+          color: selected ? context.primary.withOpacity(.4) : Colors.black26,
         ),
       ],
       borderRadius: BorderRadius.circular(16),

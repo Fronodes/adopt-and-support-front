@@ -17,6 +17,10 @@ class NavigationService implements INavigationService {
     await navigatorKey.currentState?.pushNamed(path, arguments: data);
   }
 
+  void pop() {
+    navigatorKey.currentState?.pop();
+  }
+
   @override
   Future<void> navigateToPageClear(
       {String path = '/', Object data = const {}}) async {

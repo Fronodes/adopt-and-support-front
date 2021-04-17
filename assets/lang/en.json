@@ -16,5 +16,10 @@
 	"cats": "Cats",
 	"dogs": "Dogs",
 	"friends": "Friends",
-	"see_all": "See all"
+	"see_all": "See all",
+	"gender": "Gender",
+	"age": "Age",
+	"weight": "Weight",
+	"summary": "Summary",
+	"contact_person": "Contact"
 }
