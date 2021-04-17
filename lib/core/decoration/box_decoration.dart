@@ -15,9 +15,9 @@ class BoxDeco {
       color: selected ? Colors.white : Colors.white.withOpacity(.85),
       boxShadow: [
         BoxShadow(
-          offset: Offset(.8, 2.4),
-          blurRadius: 2.3,
-          spreadRadius: 1.9,
+          offset: Offset(.8, 1.9),
+          blurRadius: 2.8,
+          spreadRadius: 2.3,
           color: selected ? context.primary.withOpacity(.3) : Colors.black26,
         ),
       ],
