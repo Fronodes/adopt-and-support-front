@@ -1,3 +1,13 @@
 {
-  
+	"add_new": "Add New",
+	"step": "Step",
+	"go_back": "Go Back",
+	"whats_his_name": "What's his name",
+	"whats_her_name": "What's her name",
+	"whats_his_age": "What's his age",
+	"whats_her_age": "What's her age",
+	"whats_his_weight": "What's his weight",
+	"whats_her_weight": "What's her weight",
+	"tell_us_more_about_him": "Tell us more about him",
+	"tell_us_more_about_her": "Tell us more about her"
 }
