@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core_shelf.dart';
+import '../init/lang/app_localizations.dart';
 
 extension ImagePathExtension on String {
   String get toSVG => 'assets/svg/$this.svg';
@@ -11,6 +12,7 @@ extension ImagePathExtension on String {
 }
 
 extension StringTranslate on String {
-  String get translate =>
-      AppLocalizations.instance?.translateHelper(this) ?? '';
+  String get translate {
+    return AppLocalizations.instance?.translateHelper(this) ?? this;
+  }
 }

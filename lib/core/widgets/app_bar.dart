@@ -26,7 +26,7 @@ Widget mainContainer(BuildContext context, String title, {Widget? icon}) {
             height: context.height * 4.2,
           ),
         ),
-        Expanded(flex: 2, child: screenText(context, title)),
+        Expanded(flex: 6, child: screenText(context, title)),
         Expanded(child: icon ?? Container())
       ],
     ),

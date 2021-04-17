@@ -1,6 +1,11 @@
 {
+  "add_new": "Yeni ekle",
+  "step": "Adım",
+  "go_back": "Geri git",
+  "whats_his_name": "İsmi ne",
+  "whats_her_name": "İsmi ne",
   "home_screen": "Anasayfa",
-  "home_title": "Find your next\nbest Friend",
+  "home_title": "Yeni bir arkadaş bulmaya\nne dersin?",
   "search": "Lokasyona göre ara",
   "cats": "Kediler",
   "dogs": "Köpekler",

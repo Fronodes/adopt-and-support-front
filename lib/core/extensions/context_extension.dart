@@ -23,6 +23,7 @@ extension ThemeExtension on BuildContext {
   Color get accent => theme.accentColor;
   Color get primary => theme.primaryColor;
   Color get canvas => theme.canvasColor;
+  Color get disabled => theme.disabledColor;
   TextStyle get headline1 =>
       theme.textTheme.headline1!.copyWith(fontSize: fontSize * 4.1);
   TextStyle get headline2 =>
@@ -35,6 +36,8 @@ extension ThemeExtension on BuildContext {
       theme.textTheme.headline5!.copyWith(fontSize: fontSize * 2);
   TextStyle get headline6 =>
       theme.textTheme.headline6!.copyWith(fontSize: fontSize * 1.8);
+  TextStyle get bodyText1 => theme.textTheme.bodyText1 ?? defaultTextStyle;
+  TextStyle get bodyText2 => theme.textTheme.bodyText2 ?? defaultTextStyle;
 }
 
 extension DurationExtension on BuildContext {
