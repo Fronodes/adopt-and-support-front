@@ -27,7 +27,7 @@ class PetItem extends StatelessWidget {
   Widget getPhoto(BuildContext context) {
     return ClipRRect(
       borderRadius: context.highCircular,
-      child: Image.asset(
+      child: Image.network(
         pet.photoUrls[0],
         fit: BoxFit.fitHeight,
       ),

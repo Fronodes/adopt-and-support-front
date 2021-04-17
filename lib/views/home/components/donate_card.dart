@@ -72,8 +72,8 @@ class DonateUs extends StatelessWidget {
     return ClipPath(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       clipper: QuadraticClipper(),
-      child: Image.asset(
-        'images/cat.png',
+      child: Image.network(
+        'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
         fit: BoxFit.fitWidth,
       ),
     );
