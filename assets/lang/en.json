@@ -16,5 +16,10 @@
 	"cats": "Cats",
 	"dogs": "Dogs",
 	"friends": "Friends",
-	"see_all": "See all"
+	"see_all": "See all",
+	"select_category": "Select Category*",
+	"select_gender": "Select Gender*",
+	"fill_all_required": "Please fill all required areas",
+	"male": "Male",
+	"female": "Female"
 }

@@ -24,6 +24,7 @@ extension ThemeExtension on BuildContext {
   Color get primary => theme.primaryColor;
   Color get canvas => theme.canvasColor;
   Color get disabled => theme.disabledColor;
+  Color get error => theme.errorColor;
   TextStyle get headline1 =>
       theme.textTheme.headline1!.copyWith(fontSize: fontSize * 4.1);
   TextStyle get headline2 =>

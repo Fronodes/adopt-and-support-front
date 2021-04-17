@@ -14,7 +14,7 @@ class PetItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          getPhoto(context),
+          Expanded(child: getPhoto(context)),
           SizedBox(height: context.height * 1.2),
           getPetName(context),
           SizedBox(height: context.height * .4),
@@ -29,7 +29,7 @@ class PetItem extends StatelessWidget {
       borderRadius: context.highCircular,
       child: Image.network(
         pet.photoUrls[0],
-        fit: BoxFit.fitWidth,
+        fit: BoxFit.fitHeight,
       ),
     );
   }
