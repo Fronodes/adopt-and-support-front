@@ -7,29 +7,39 @@ class TypeItem extends StatelessWidget {
   final String title;
   final String imagePath;
   final bool isSelected;
+  final double? size;
 
   const TypeItem(
-      {required this.title, required this.imagePath, required this.isSelected});
+      {required this.title,
+      required this.imagePath,
+      required this.isSelected,
+      this.size});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 12,
-      width: context.height * 12,
+      height: size ?? context.height * 12,
+      width: size ?? context.height * 12,
       decoration: BoxDeco().typeItemDeco(context, isSelected),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          getImage(context),
-          SizedBox(height: context.height),
-          getText(context)
+          Expanded(child: getImage(context)),
+          Padding(
+            padding: context.verticalLow,
+            child: getText(context),
+          )
         ],
       ),
     );
   }
 
   Widget getImage(BuildContext context) {
-    return SvgPicture.asset(imagePath, width: context.width * 7);
+    return SvgPicture.asset(
+      imagePath,
+      width: context.width * 7,
+      color: isSelected ? context.primary : Color(0xFF8F939D),
+    );
   }
 
   Widget getText(BuildContext context) {

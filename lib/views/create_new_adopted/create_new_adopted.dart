@@ -1,6 +1,25 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/core_shelf.dart';
+import '../home/components/type_item.dart';
+
+part 'layout/button_widget.dart';
+part 'layout/text_field_widget.dart';
+part 'layout/selected_gender_widget.dart';
+part 'layout/selected_type_widget.dart';
+part 'layout/step_order_widget.dart';
+part 'layout/step_widget.dart';
+part 'layout/error_text_widget.dart';
+
+part 'view/gender_and_type_section.dart';
+part 'view/age_and_weight_section.dart';
+part 'view/name_section.dart';
+part 'view/image_section.dart';
+part 'view/summary_section.dart';
 
 class CreateNewAdopted extends StatefulWidget {
   CreateNewAdopted({Key? key}) : super(key: key);
@@ -11,11 +30,23 @@ class CreateNewAdopted extends StatefulWidget {
 
 class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   final int _stepLength = 5;
-  static int _index = 1;
+  static int _index = 5;
   static Gender? _gender;
   var _tempAgeText = '';
   var _tempWeightText = '';
+  var _errorText = '';
+  final _imageFiles = <File>[];
   late final List _textController;
+
+  String _selectedType = '';
+
+  void selectType(String type) {
+    setState(() => _selectedType = type);
+  }
+
+  void selectGender(Gender gender) {
+    setState(() => _gender = gender);
+  }
 
   @override
   void initState() {
@@ -43,218 +74,123 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _step(context),
+          _step(context, _index, _stepLength),
           Expanded(child: _body(context)),
           Padding(
-            padding: context.horizontalLow,
-            child: _buttons(),
+            padding: context.mediumPadding,
+            child: _buttons(context, _index, _goBack, onSave),
           ),
         ],
       ),
     );
   }
 
-  Widget _step(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: context.lowPadding,
-          child: Text(
-            '${'step'.translate}: $_index/$_stepLength ',
-            textAlign: TextAlign.left,
-            style: context.headline6.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ),
-        _stepOrder(context),
-      ],
-    );
-  }
-
   Widget _body(BuildContext context) {
     switch (_index) {
       case 1:
-        return Padding(
-          padding: context.horizontalMedium,
-          child: Column(
-            children: [
-              Text('select_category'.translate),
-              SizedBox(
-                  height: context.height * 20,
-                  child: _selectTypeButton(context))
-            ],
-          ),
-        );
+        return _genderAndTypeSection(
+            context,
+            getErrorWidget(context, _errorText),
+            _errorText,
+            _selectedType,
+            _gender,
+            (type) => setState(() => _selectedType = type),
+            (gender) => setState(() => _gender = gender));
       case 2:
-        return Padding(
-          padding: context.horizontalMedium,
-          child: Container(
-            alignment: Alignment.topLeft,
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                _textFieldEditor(
-                    context,
-                    _textController[0],
-                    _gender == Gender.male
-                        ? 'whats_his_name'.translate
-                        : 'whats_her_name'.translate,
-                    (val) {},
-                    (val) {}),
-              ],
-            ),
-          ),
-        );
+        return _nameSection(
+            context,
+            getErrorWidget(context, _errorText),
+            _gender == Gender.male
+                ? 'whats_his_name'.translate
+                : 'whats_her_name'.translate,
+            _errorText,
+            _textController[0],
+            onSave);
       case 3:
-        return Padding(
-          padding: context.horizontalMedium,
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Stack(
-                  alignment: Alignment.centerLeft,
-                  children: [
-                    _textFieldEditor(
-                        context,
-                        _textController[1],
-                        _gender == Gender.male
-                            ? 'whats_his_age'.translate
-                            : 'whats_her_age'.translate, (val) {
-                      var _demo = '';
-                      for (var i = 0; i < val.length; i++) {
-                        _demo += ' ';
-                      }
-                      setState(() {
-                        val != ''
-                            ? _tempAgeText = '$_demo           year'
-                            : _tempAgeText = '';
-                      });
-                    }, (val) {}),
-                    Text(
-                      '$_tempAgeText',
-                      style: context.headline5,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Stack(
-                  alignment: Alignment.centerLeft,
-                  children: [
-                    _textFieldEditor(
-                        context,
-                        _textController[2],
-                        _gender == Gender.male
-                            ? 'whats_his_weight'.translate
-                            : 'whats_her_weight'.translate, (val) {
-                      var _demo = '';
-                      for (var i = 0; i < val.length; i++) {
-                        _demo += ' ';
-                      }
-                      setState(() {
-                        val != ''
-                            ? _tempWeightText = '$_demo           kg'
-                            : _tempWeightText = '';
-                      });
-                    }, (val) {}),
-                    Text(
-                      '$_tempWeightText',
-                      style: context.headline5,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
+        return _ageAndWeightSection(
+            context,
+            _gender == Gender.male
+                ? 'whats_his_age'.translate
+                : 'whats_her_age'.translate,
+            _gender == Gender.male
+                ? 'whats_his_weight'.translate
+                : 'whats_her_weight'.translate,
+            _tempAgeText,
+            _tempWeightText,
+            getErrorWidget(context, _errorText),
+            _textController[1],
+            _textController[2],
+            _onAgeChange,
+            _onWeightChange,
+            onSave);
       case 4:
-        return Padding(
-          padding: context.horizontalMedium,
-          child: Container(
-            alignment: Alignment.topLeft,
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                _textFieldEditor(
-                    context,
-                    _textController[0],
-                    _gender == Gender.male
-                        ? 'tell_us_more_about_him'.translate
-                        : 'tell_us_more_about_her'.translate,
-                    (val) {},
-                    (val) {}),
-              ],
-            ),
-          ),
-        );
-
+        return _summarySection(
+            context,
+            _gender == Gender.male
+                ? 'tell_us_more_about_him'.translate
+                : 'tell_us_more_about_her'.translate,
+            getErrorWidget(context, _errorText),
+            _textController[3],
+            (val) => null,
+            onSave);
       case 5:
-        return Container(
-          color: Colors.purpleAccent,
-        );
+        return _imageSection(
+            context,
+            getErrorWidget(context, _errorText),
+            _imageFiles,
+            (val) => setState(() {
+                  print(val.path);
+                  _imageFiles.add(val);
+                }));
+      case 6:
+        return Container();
       default:
         throw NotFoundException(
             'The $_index not found. On Create_new_adopted.dart');
     }
   }
 
-  Row _buttons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _index == 1
-            ? Container()
-            : GestureDetector(
-                onTap: () => setState(() => _index--),
-                child: Text('go_back'.translate),
-              ),
-        FloatingActionButton(
-          onPressed: () => setState(() => _index++),
-          child: Icon(_index == 5 ? Icons.done : Icons.arrow_right_alt),
-        ),
-      ],
-    );
+  void onSave(val) => setState(() {
+        if (_index == 1 && _gender != null && _selectedType != '') {
+          _index++;
+          _errorText = '';
+        } else if (_index == 2 && _textController[0].text != '') {
+          _index++;
+          _errorText = '';
+        } else if (_index == 3 &&
+            _textController[1].text != '' &&
+            _textController[2].text != '') {
+          _index++;
+          _errorText = '';
+        } else if (_index == 4 && _textController[3].text != '') {
+          _index++;
+          _errorText = '';
+        } else {
+          _errorText = 'fill_all_required'.translate;
+        }
+      });
+
+  void _onWeightChange(val) {
+    var _demo = '';
+    for (var i = 0; i < val.length; i++) {
+      _demo += ' ';
+    }
+    setState(() {
+      val != ''
+          ? _tempWeightText = '$_demo           kg'
+          : _tempWeightText = '';
+    });
   }
 
-  Row _stepOrder(BuildContext context) {
-    var stepList = List.generate(
-        5,
-        (index) => Expanded(
-              child: Padding(
-                padding: context.lowPadding,
-                child: Container(
-                  margin: EdgeInsets.only(right: 5),
-                  height: context.height * 1,
-                  decoration: BoxDecoration(
-                    color: index <= _index - 1
-                        ? context.primary
-                        : context.disabled,
-                    borderRadius: BorderRadius.circular(3),
-                  ),
-                ),
-              ),
-            ));
-    return Row(children: stepList);
+  void _onAgeChange(val) {
+    var _demo = '';
+    for (var i = 0; i < val.length; i++) {
+      _demo += ' ';
+    }
+    setState(() {
+      val != '' ? _tempAgeText = '$_demo           year' : _tempAgeText = '';
+    });
   }
 
-  Container _selectTypeButton(BuildContext context) {
-    return Container();
-  }
-
-  TextFormField _textFieldEditor(
-      BuildContext context,
-      TextEditingController _controller,
-      String labelText,
-      Function(String) onChange,
-      Function(String) onSave) {
-    return TextFormField(
-      controller: _controller,
-      style: context.headline4,
-      onChanged: onChange,
-      maxLines: null,
-      decoration: TextFormDeco.createNewAdopted(context, labelText),
-    );
-  }
+  void _goBack() => setState(() => _index--);
 }
