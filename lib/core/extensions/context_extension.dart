@@ -23,6 +23,7 @@ extension ThemeExtension on BuildContext {
   Color get accent => theme.accentColor;
   Color get primary => theme.primaryColor;
   Color get canvas => theme.canvasColor;
+  Color get disabled => theme.disabledColor;
   TextStyle get headline1 =>
       theme.textTheme.headline1!.copyWith(fontSize: fontSize * 4.6);
   TextStyle get headline2 => theme.textTheme.headline2 ?? defaultTextStyle;
@@ -30,6 +31,8 @@ extension ThemeExtension on BuildContext {
   TextStyle get headline4 => theme.textTheme.headline4 ?? defaultTextStyle;
   TextStyle get headline5 => theme.textTheme.headline5 ?? defaultTextStyle;
   TextStyle get headline6 => theme.textTheme.headline6 ?? defaultTextStyle;
+  TextStyle get bodyText1 => theme.textTheme.bodyText1 ?? defaultTextStyle;
+  TextStyle get bodyText2 => theme.textTheme.bodyText2 ?? defaultTextStyle;
 }
 
 extension DurationExtension on BuildContext {
@@ -68,10 +71,10 @@ extension SymmetricPaddingExtension on BuildContext {
   EdgeInsets get verticalHigh => EdgeInsets.symmetric(vertical: high);
   EdgeInsets get verticalExtreme => EdgeInsets.symmetric(vertical: extreme);
 
-  EdgeInsets get horizontalLow => EdgeInsets.symmetric(vertical: low);
-  EdgeInsets get horizontalMedium => EdgeInsets.symmetric(vertical: medium);
-  EdgeInsets get horizontalHigh => EdgeInsets.symmetric(vertical: high);
-  EdgeInsets get horizontalExtreme => EdgeInsets.symmetric(vertical: extreme);
+  EdgeInsets get horizontalLow => EdgeInsets.symmetric(horizontal: low);
+  EdgeInsets get horizontalMedium => EdgeInsets.symmetric(horizontal: medium);
+  EdgeInsets get horizontalHigh => EdgeInsets.symmetric(horizontal: high);
+  EdgeInsets get horizontalExtreme => EdgeInsets.symmetric(horizontal: extreme);
 
   EdgeInsets get lowSymmetric =>
       EdgeInsets.symmetric(horizontal: low, vertical: low);
