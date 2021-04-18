@@ -15,5 +15,10 @@
   "age": "Yaş",
   "weight": "Kilo",
   "summary": "Açıklama",
-  "contact_person": "İletişim"
+  "contact_person": "İletişim",
+  "edit_profile": "Profili Düzenle",
+  "adoption_posts": "İlanlar",
+  "favorites": "Favoriler",
+  "info": "Bilgiler",
+  "ok": "Tamam"
 }

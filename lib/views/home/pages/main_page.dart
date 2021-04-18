@@ -107,15 +107,17 @@ class _MainPageState extends State<MainPage> {
       height: context.height * 23,
       margin: EdgeInsets.only(
         left: context.width * 3,
-        top: context.height * .5,
-        bottom: context.height * 2.6,
+        top: context.height * 1.3,
+        bottom: context.height * 2.3,
       ),
       child: ListView.builder(
         itemCount: 5,
         scrollDirection: Axis.horizontal,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          return PetItem(pet: getDummyPet());
+          var pet = getDummyPet();
+          pet.id = index.toString();
+          return PetItem(pet: pet);
         },
       ),
     );

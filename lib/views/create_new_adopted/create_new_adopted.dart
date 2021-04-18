@@ -2,23 +2,25 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../core/core_shelf.dart';
 import '../home/components/type_item.dart';
+import '../pet_detail/components/detail_item.dart';
 
 part 'layout/button_widget.dart';
-part 'layout/text_field_widget.dart';
+part 'layout/error_text_widget.dart';
 part 'layout/selected_gender_widget.dart';
 part 'layout/selected_type_widget.dart';
 part 'layout/step_order_widget.dart';
 part 'layout/step_widget.dart';
-part 'layout/error_text_widget.dart';
-
-part 'view/gender_and_type_section.dart';
+part 'layout/text_field_widget.dart';
 part 'view/age_and_weight_section.dart';
-part 'view/name_section.dart';
+part 'view/gender_and_type_section.dart';
 part 'view/image_section.dart';
+part 'view/name_section.dart';
+part 'view/preview_section.dart';
 part 'view/summary_section.dart';
 
 class CreateNewAdopted extends StatefulWidget {
@@ -31,6 +33,7 @@ class CreateNewAdopted extends StatefulWidget {
 class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   final int _stepLength = 5;
   static int _index = 5;
+  static int _slidingIndex = 0;
   static Gender? _gender;
   var _tempAgeText = '';
   var _tempWeightText = '';
@@ -65,12 +68,28 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(context, 'add_new'.translate, 'close'),
+      appBar: getAppBar(context,
+          _index == 6 ? 'preview'.translate : 'add_new'.translate, 'close'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _step(context, _index, _stepLength),
-          Expanded(child: _body(context)),
+          if (_index != 6)
+            ...{
+              _step(context, _index, _stepLength),
+              Expanded(child: _body(context)),
+            }.toList(),
+          if (_index == 6)
+            Expanded(
+              child: preview(
+                  context,
+                  _gender!,
+                  _textController[1].text,
+                  _textController[2].text,
+                  _textController[3].text,
+                  _slidingIndex,
+                  _imageFiles,
+                  (val) => setState(() => _slidingIndex = val)),
+            ),
           Padding(
             padding: context.mediumPadding,
             child: _buttons(context, _index, _goBack, onSave),
@@ -129,16 +148,8 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
             (val) => null,
             onSave);
       case 5:
-        return _imageSection(
-            context,
-            getErrorWidget(context, _errorText),
-            _imageFiles,
-            (val) => setState(() {
-                  print(val.path);
-                  _imageFiles.add(val);
-                }));
-      case 6:
-        return Container();
+        return _imageSection(context, getErrorWidget(context, _errorText),
+            _imageFiles, (val) => setState(() => _imageFiles.add(val)));
       default:
         throw NotFoundException(
             'The $_index not found. On Create_new_adopted.dart');
@@ -158,6 +169,9 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
           _index++;
           _errorText = '';
         } else if (_index == 4 && _textController[3].text != '') {
+          _index++;
+          _errorText = '';
+        } else if (_index == 5 && _imageFiles.isNotEmpty) {
           _index++;
           _errorText = '';
         } else {

@@ -83,7 +83,7 @@ class CustomDialog extends SensitivePlatformWidget {
               EdgeInsets.only(right: context.width, bottom: context.height),
           child: Text(
             rightButtonText,
-            style: context.headline5,
+            style: context.headline3,
           ),
         ),
       ),
@@ -98,7 +98,7 @@ class CustomDialog extends SensitivePlatformWidget {
       },
       child: Text(
         rightButtonText,
-        style: context.headline4,
+        style: context.headline3,
       ),
     ));
   }

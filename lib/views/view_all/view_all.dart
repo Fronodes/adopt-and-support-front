@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../core/core_shelf.dart';
 import '../../core/dummy/dummy_pet.dart';
-import '../home/components/components_shelf.dart';
 
 class ViewAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Pet> list = [];
+    List<Pet> petList = [];
     for (var i = 0; i < 10; i++) {
-      list.add(getDummyPet());
+      var pet = getDummyPet();
+      pet.id = i.toString();
+      petList.add(pet);
     }
     return Scaffold(
       appBar: getAppBar(context, 'see_all'.translate, 'close'),
@@ -20,11 +21,9 @@ class ViewAll extends StatelessWidget {
           top: context.height * 3,
           bottom: context.height * 2,
         ),
-        child: GridView.count(
-          physics: BouncingScrollPhysics(),
-          crossAxisCount: 2,
-          childAspectRatio: 1.1,
-          children: [...list.map((pet) => PetItem(pet: pet))],
+        child: CustomGridView(
+          list: petList,
+          type: 'pet',
         ),
       ),
     );

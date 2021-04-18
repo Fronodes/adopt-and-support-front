@@ -5,15 +5,16 @@ import '../core_shelf.dart';
 class RoundedButton extends StatelessWidget {
   final Function() onPressed;
   final String text;
-  const RoundedButton({required this.onPressed, this.text = ''});
+  final BorderRadius? radius;
+  const RoundedButton({required this.onPressed, this.text = '', this.radius});
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 5,
-      borderRadius: context.mediumCircular,
-      shadowColor: context.primary,
-      color: context.primary,
+      elevation: 7,
+      borderRadius: radius ?? context.mediumCircular,
+      shadowColor: context.primary.withOpacity(.9),
+      color: context.primary.withOpacity(.8),
       child: getButton(context),
     );
   }
@@ -24,7 +25,6 @@ class RoundedButton extends StatelessWidget {
       padding: context.lowSymmetric,
       onPressed: onPressed,
       animationDuration: Duration(milliseconds: 200),
-      shape: context.roundedRectangularMedium,
       child: textWithStyle(context),
     );
   }
@@ -34,10 +34,7 @@ class RoundedButton extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: Colors.white.withOpacity(.9),
-        fontWeight: FontWeight.w600,
-        fontSize: context.fontSize * 1.9,
-      ),
+          color: Colors.white.withOpacity(.9), fontWeight: FontWeight.w600),
     );
   }
 }

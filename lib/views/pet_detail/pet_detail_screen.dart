@@ -18,13 +18,16 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
     pet = Provider.of<PetProvider>(context).getSelectedPet();
     return Scaffold(
       appBar: getAppBar(context, pet!.name, 'detail'),
-      body: Column(
-        children: [
-          getSlidingBar(),
-          getInfoRow(),
-          getSummary(),
-          getContact(),
-        ],
+      body: Padding(
+        padding: context.bottomExtreme,
+        child: Column(
+          children: [
+            Expanded(flex: 4, child: getSlidingBar()),
+            Expanded(flex: 2, child: getInfoRow()),
+            Expanded(flex: 2, child: getSummary()),
+            Expanded(flex: 2, child: getContact()),
+          ],
+        ),
       ),
     );
   }
@@ -60,9 +63,8 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: context.width * 6.6,
-        vertical: context.height * 1.3,
+        vertical: context.height * 1.5,
       ),
-      constraints: BoxConstraints(maxHeight: context.height * 9),
       alignment: Alignment.centerLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,6 +76,8 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
           Text(
             pet!.summary,
             style: context.headline4.copyWith(color: Colors.black54),
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
           )
         ],
       ),
@@ -83,7 +87,7 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
   Widget getContact() {
     return Container(
       padding: context.horizontalHigh,
-      margin: context.topHigh,
+      margin: context.topMedium,
       width: double.infinity,
       height: context.height * 14,
       child: ContactPerson(

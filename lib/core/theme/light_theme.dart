@@ -14,7 +14,7 @@ final ThemeData lightTheme = ThemeData(
     900: Color(0xff0f1a24)
   }),
   brightness: Brightness.light,
-  primaryColor: Color(0xff4a7dac),
+  primaryColor: Color(0xffaac9e5),
   primaryColorBrightness: Brightness.dark,
   primaryColorLight: Color(0xffdbe6f0),
   primaryColorDark: Color(0xff2e4e6b),
