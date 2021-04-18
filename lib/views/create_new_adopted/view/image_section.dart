@@ -1,7 +1,7 @@
 part of '../create_new_adopted.dart';
 
-LayoutBuilder _imageSection(BuildContext context, Widget errorWidget,
-    List<File> item, Function(File) onPressed) {
+Padding _imageSection(BuildContext context, Widget errorWidget, List<File> item,
+    Function(File) onPressed) {
   var _picker = ImagePicker();
 
   var tmpList = [
@@ -22,11 +22,23 @@ LayoutBuilder _imageSection(BuildContext context, Widget errorWidget,
           child: Container(child: Icon(Icons.add, color: context.primary))),
     )
   ];
-  return LayoutBuilder(
-    builder: (ctx, cntrnts) => GridView.count(
-      crossAxisCount: 2,
-      childAspectRatio: cntrnts.biggest.aspectRatio * 4 / 2,
-      children: tmpList,
+  return Padding(
+    padding: context.horizontalMedium,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('add_some_photo'.translate, style: context.headline4),
+        errorWidget,
+        Expanded(
+          child: LayoutBuilder(
+            builder: (ctx, cntrnts) => GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: cntrnts.biggest.aspectRatio * 4 / 2,
+              children: tmpList,
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }
