@@ -54,7 +54,7 @@ class PetItem extends StatelessWidget {
 
   Future<void> navigateToDetail() async {
     //TODO: Get by id
-    NavigationService.instance
+    await NavigationService.instance
         .navigateToPage(path: NavigationConstants.petDetail);
   }
 }

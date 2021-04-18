@@ -7,7 +7,7 @@ import '../home/components/components_shelf.dart';
 class ViewAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Pet> list = [];
+    var list = <Pet>[];
     for (var i = 0; i < 10; i++) {
       list.add(getDummyPet());
     }

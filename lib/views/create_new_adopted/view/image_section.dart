@@ -16,8 +16,26 @@ Padding _imageSection(BuildContext context, Widget errorWidget, List<File> item,
           style: ElevatedButton.styleFrom(primary: context.canvas),
           onPressed: () async {
             var source = await _picker.getImage(source: ImageSource.gallery);
-            var _file = File(source!.path);
-            onPressed(_file);
+
+            var _file = kIsWeb
+                ? File(source!.path)
+                : await ImageCropper.cropImage(
+                    sourcePath: source!.path,
+                    aspectRatioPresets: [
+                      CropAspectRatioPreset.ratio3x2,
+                    ],
+                    androidUiSettings: AndroidUiSettings(
+                        toolbarTitle: 'Cropper',
+                        toolbarColor: Colors.deepOrange,
+                        toolbarWidgetColor: Colors.white,
+                        lockAspectRatio: false),
+                    iosUiSettings: IOSUiSettings(
+                      minimumAspectRatio: 1.0,
+                    ));
+
+            if (_file != null) {
+              onPressed(_file);
+            }
           },
           child: Container(child: Icon(Icons.add, color: context.primary))),
     )
