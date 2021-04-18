@@ -37,7 +37,12 @@
 ## About The Project
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/831943870375264267/833356280172511262/Screenshot_2021-04-18-18-00-02-818_com.sambapos.cio.jpg" alt="Logo" width="300" height="600" >
-<img src="https://puu.sh/Hzpro/8a648660be.png" alt="Logo" width="300" height="600" ></p>
+<img src="https://puu.sh/Hzpro/8a648660be.png" alt="Logo" width="300" height="600" >
+<img src="https://puu.sh/HzprX/70bd193b6b.png" alt="Logo" width="300" height="600" >
+<img src="https://puu.sh/HzprJ/2bd80d7eec.png" alt="Logo" width="300" height="600" >
+<img src="https://puu.sh/Hzpsn/42e48484d8.png" alt="Logo" width="300" height="600" >
+  
+</p>
 
 <b>Main purpose of the app is to find homes for abondoned animals and has many features.</b>
 
