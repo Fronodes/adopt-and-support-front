@@ -1,3 +1,7 @@
+import 'package:cio/core/services/category/category.dart';
+import 'package:cio/core/services/package/package.dart';
+import 'package:cio/core/services/pet/pet.dart';
+import 'package:cio/core/services/user/user.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/core_shelf.dart';
@@ -48,7 +52,8 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         children: [
           InkWell(
-            onTap: () => select('cats'),
+            onTap: () => PetApiService()
+                .getPetsByCategories(['607b3ef2d5461925c05227e9']),
             child: TypeItem(
               imagePath: 'cat'.toSVG,
               title: 'cats'.translate,
