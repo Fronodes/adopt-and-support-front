@@ -36,7 +36,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
-<a href="https://www.figma.com/file/6UvLPQESkmP9WU4G6oh1cY/Pet-Adopt-App-Copy?node-id=0%3A1">All our design can be found here.</p>
+<a href="https://www.figma.com/file/6UvLPQESkmP9WU4G6oh1cY/Pet-Adopt-App-Copy?node-id=0%3A1">All our design can be found here.</a>
   
   
 <img src="https://cdn.discordapp.com/attachments/831943870375264267/833356280172511262/Screenshot_2021-04-18-18-00-02-818_com.sambapos.cio.jpg" alt="Logo" width="300" height="600" >
