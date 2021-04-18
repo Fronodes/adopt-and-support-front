@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../core_shelf.dart';
 
 class SlidingPage extends StatelessWidget {
+  final String? type;
   final List photoUrls;
   final Function(int) func;
   final PageController controller;
@@ -11,7 +13,7 @@ class SlidingPage extends StatelessWidget {
       {required this.func,
       required this.controller,
       required this.photoUrls,
-      required this.currentIndex});
+      required this.currentIndex, this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,10 @@ class SlidingPage extends StatelessWidget {
               tag: photo,
               child: ClipRRect(
                 borderRadius: context.highCircular,
-                child: Image.network(
+                child: (type==null || kIsWeb) ? Image.network(
+                  photo,
+                  fit: BoxFit.cover,
+                ):Image.asset(
                   photo,
                   fit: BoxFit.cover,
                 ),

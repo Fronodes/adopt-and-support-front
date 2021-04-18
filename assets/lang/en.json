@@ -26,5 +26,7 @@
 	"age": "Age",
 	"weight": "Weight",
 	"summary": "Summary",
-	"contact_person": "Contact"
+	"contact_person": "Contact",
+	"add_some_photo": "Now,let's add some photos!",
+	"preview":"Preview"
 }
