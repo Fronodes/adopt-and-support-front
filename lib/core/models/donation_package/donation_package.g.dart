@@ -8,7 +8,7 @@ part of 'donation_package.dart';
 
 DonationPackage _$DonationPackageFromJson(Map<String, dynamic> json) {
   return DonationPackage(
-    json['id'] as String,
+    json['_id'] as String,
     json['name'] as String,
     (json['price'] as num).toDouble(),
     json['pieceNumber'] as int,
@@ -18,7 +18,7 @@ DonationPackage _$DonationPackageFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DonationPackageToJson(DonationPackage instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'name': instance.name,
       'price': instance.price,
       'pieceNumber': instance.pieceNumber,

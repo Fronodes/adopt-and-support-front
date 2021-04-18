@@ -52,7 +52,8 @@ class UserApiService {
         '$_endpoint/login',
         data: body,
       );
-
+      await LocaleManager.instance.setStringValue(
+          PreferencesKeys.accessToken, response.data['accessToken']);
       return User.fromJson(response.data['user']);
     } on DioError catch (error, stacktrace) {
       print('Exception occured: $error stackTrace: $stacktrace');

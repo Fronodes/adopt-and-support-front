@@ -31,6 +31,8 @@
 .pub/
 /build/
 /linux/*
+.pubspec.lock
+.pubspec
 
 # Web related
 lib/generated_plugin_registrant.dart
