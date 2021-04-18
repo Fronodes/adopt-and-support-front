@@ -6,7 +6,7 @@ Padding _imageSection(BuildContext context, Widget errorWidget, List<File> item,
     ...item.map((item) => Padding(
         padding: context.mediumPadding,
         child: ClipRRect(
-          child: getImage(item),
+          child: getImage(item, context),
         ))),
     Padding(
       padding: context.mediumPadding,
@@ -34,9 +34,11 @@ Padding _imageSection(BuildContext context, Widget errorWidget, List<File> item,
   );
 }
 
-Widget getImage(File item) => kIsWeb
-    ? Image.network(
-        item.path,
-        fit: BoxFit.fill,
+Widget getImage(File item, BuildContext context) => kIsWeb
+    ? FadeInImage.assetNetwork(
+        placeholder: 'loading'.gifPath,
+        width: context.width * 48,
+        fit: BoxFit.cover,
+        image: item.path,
       )
     : Image.file(File(item.path), fit: BoxFit.fill);

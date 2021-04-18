@@ -1,9 +1,6 @@
-import 'package:cio/core/services/pet/pet.dart';
-import 'package:cio/core/services/user/user.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/core_shelf.dart';
-import '../../../core/dummy/dummy_pet.dart';
 import '../components/components_shelf.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,13 +9,30 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<String> selectedItems = ['cats'];
+  List<String> selectedItems = [];
+  List<Pet> pets = [];
+
+  Future<bool> getInitialData() async {
+    var petProv = Provider.of<PetProvider>(context);
+    pets = await petProv.getPets();
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.horizontalMedium,
-      child: getColumn(),
+    return FutureBuilder(
+      future: getInitialData(),
+      builder: (context, snapshot) {
+        if (selectedItems.isEmpty) selectedItems.add('cat');
+        return snapshot.connectionState == ConnectionState.waiting
+            ? Center(
+                child:
+                    CircularProgressIndicator(backgroundColor: context.primary))
+            : Padding(
+                padding: context.horizontalMedium,
+                child: getColumn(),
+              );
+      },
     );
   }
 
@@ -27,16 +41,20 @@ class _MainPageState extends State<MainPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: context.height * 3),
-        SearchBar(onPress: showSearchHelper),
-        getTypeRow(),
-        getPetRow(),
-        getPets(),
+        Expanded(flex: 2, child: SearchBar(onPress: showSearchHelper)),
+        Expanded(flex: 4, child: getTypeRow()),
+        Expanded(child: getPetRow()),
+        Expanded(flex: 7, child: getPets()),
         SizedBox(height: context.height * .7),
-        Container(
-          height: context.height * 15,
-          margin: context.horizontalMedium,
-          child: DonateUs(),
+        Expanded(
+          flex: 4,
+          child: Container(
+            height: context.height * 15,
+            margin: context.horizontalMedium,
+            child: DonateUs(),
+          ),
         ),
+        SizedBox(height: context.height * 3),
       ],
     );
   }
@@ -50,7 +68,7 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         children: [
           InkWell(
-            onTap: () => PetApiService().getAllPets(),
+            onTap: () => select('cats'),
             child: TypeItem(
               imagePath: 'cat'.toSVG,
               title: 'cats'.translate,
@@ -108,13 +126,11 @@ class _MainPageState extends State<MainPage> {
         bottom: context.height * 2.3,
       ),
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: pets.length > 5 ? 5 : pets.length,
         scrollDirection: Axis.horizontal,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          var pet = getDummyPet();
-          pet.id = index.toString();
-          return PetItem(pet: pet);
+          return PetItem(pet: pets[index]);
         },
       ),
     );
@@ -131,7 +147,14 @@ class _MainPageState extends State<MainPage> {
   void select(String type) {
     setState(() {
       if (selectedItems.contains(type)) {
-        selectedItems.remove(type);
+        if (selectedItems.length == 1) {
+          CustomDialog(
+            content: DefaultPopupText(text: 'cant_remove_type'.translate),
+            rightButtonText: 'ok'.translate,
+          ).show(context);
+        } else {
+          selectedItems.remove(type);
+        }
       } else {
         selectedItems.add(type);
       }

@@ -18,11 +18,13 @@ class PetItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            getPhoto(context),
+            Expanded(flex: type == 'pet' ? 6 : 3, child: getPhoto(context)),
             SizedBox(height: context.height * 1.5),
-            getPetName(context),
-            SizedBox(height: context.height * .5),
-            type == 'pet' ? LocationRow(text: pet.summary) : Container()
+            Expanded(child: getPetName(context)),
+            SizedBox(height: context.height * .3),
+            type == 'pet'
+                ? Expanded(child: LocationRow(text: pet.summary))
+                : Container()
           ],
         ),
       ),
@@ -34,9 +36,11 @@ class PetItem extends StatelessWidget {
       tag: pet.id,
       child: ClipRRect(
         borderRadius: context.highCircular,
-        child: Image.network(
-          pet.photoUrls[0],
-          fit: BoxFit.fitWidth,
+        child: FadeInImage.assetNetwork(
+          placeholder: 'loading'.gifPath,
+          width: context.width * 48,
+          fit: BoxFit.cover,
+          image: 'https://e28c51664e12.ngrok.io${pet.photoUrls[0]}',
         ),
       ),
     );

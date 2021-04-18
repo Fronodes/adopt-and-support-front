@@ -7,6 +7,7 @@ export './custom_grid_view.dart';
 export './custom_tab_bar.dart';
 export './default_icon.dart';
 export './divider.dart';
+export './loading_dialog.dart';
 export './location_row.dart';
 export './rounded_button.dart';
 export './rounded_card.dart';

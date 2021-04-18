@@ -45,8 +45,12 @@ class _ProfileScreenState extends State<ProfileScreen>
     return CircleAvatar(
       radius: context.width * 14,
       child: ClipOval(
-        child: Image.network(
-          'https://media-exp1.licdn.com/dms/image/C4E03AQHU6Ezgwi0C-g/profile-displayphoto-shrink_200_200/0/1606736684620?e=1622073600&v=beta&t=NrOzkhzr7ha8lKPyvZifiiVVXp_4qPPT_NyAKRIlPOM',
+        child: FadeInImage.assetNetwork(
+          placeholder: 'loading'.gifPath,
+          width: context.width * 48,
+          fit: BoxFit.cover,
+          image:
+              'https://media-exp1.licdn.com/dms/image/C4E03AQHU6Ezgwi0C-g/profile-displayphoto-shrink_200_200/0/1606736684620?e=1622073600&v=beta&t=NrOzkhzr7ha8lKPyvZifiiVVXp_4qPPT_NyAKRIlPOM',
         ),
       ),
     );

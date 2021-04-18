@@ -9,6 +9,7 @@ extension ImagePathExtension on String {
   AssetImage get pngImageAsset => AssetImage('assets/images/$this.png');
   AssetImage get pngLogoAsset => AssetImage('assets/logo/$this.png');
   AssetImage get pngIconAsset => AssetImage('assets/icon/$this.png');
+  String get gifPath => 'assets/gif/$this.gif';
 }
 
 extension StringTranslate on String {

@@ -17,9 +17,14 @@ class CustomGridView extends StatelessWidget {
       crossAxisCount: 2,
       childAspectRatio: type == 'pet' ? 1.1 : 1.2,
       children: [
-        ...list.map((pet) => type == 'pet' || type == 'adopt'
-            ? PetItem(pet: pet, type: 'adopt')
-            : Container()),
+        ...list.map(
+          (pet) => type == 'pet' || type == 'adopt'
+              ? Padding(
+                  padding: context.lowPadding,
+                  child: PetItem(pet: pet, type: 'adopt'),
+                )
+              : Container(),
+        ),
         type == 'adopt'
             ? Container(
                 margin: EdgeInsets.only(
@@ -27,7 +32,8 @@ class CustomGridView extends StatelessWidget {
                   right: context.width * 3,
                   bottom: context.height * 5,
                 ),
-                child: AddImageLargeButton(onPressed: navigateToAddAdopt, type: 'newPage'))
+                child: AddImageLargeButton(
+                    onPressed: navigateToAddAdopt, type: 'newPage'))
             : Container()
       ],
     );

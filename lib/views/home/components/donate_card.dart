@@ -22,7 +22,7 @@ class DonateUs extends StatelessWidget {
             child: _textSection(context),
           ),
           Expanded(
-            child: _image(),
+            child: _image(context),
           )
         ],
       ),
@@ -68,13 +68,15 @@ class DonateUs extends StatelessWidget {
     );
   }
 
-  ClipPath _image() {
+  ClipPath _image(BuildContext context) {
     return ClipPath(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       clipper: QuadraticClipper(),
-      child: Image.network(
-        'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
-        fit: BoxFit.fitWidth,
+      child: FadeInImage.assetNetwork(
+        placeholder: 'loading'.gifPath,
+        width: context.width * 48,
+        fit: BoxFit.cover,
+        image: 'https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg',
       ),
     );
   }

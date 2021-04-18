@@ -23,17 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
           items: <Widget>[
             getIcon(pageIndex == 0 ? Icons.home : Icons.home_outlined, 0),
             getIcon(
-                pageIndex == 1
-                    ? Icons.notifications
-                    : Icons.notifications_outlined,
-                1),
+              pageIndex == 1
+                  ? Icons.notifications
+                  : Icons.notifications_outlined,
+              1,
+            ),
             getIcon(pageIndex == 2 ? Icons.person : Icons.person_outline, 2),
           ],
-          onTap: (index) {
-            setState(() {
-              pageIndex = index;
-            });
-          },
+          onTap: changeIndex,
         ),
         resizeToAvoidBottomInset: false,
         body: getBody());
@@ -48,8 +45,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getBody() {
-    return pageIndex == 0
-        ? MainPage()
-        : (pageIndex == 2 ? ProfileScreen() : Container());
+    if (pageIndex == 0) {
+      return MainPage();
+    } else if (pageIndex == 1) {
+      return Container();
+    } else {
+      return ProfileScreen();
+    }
+  }
+
+  Future<void> changeIndex(int index) async {
+    setState(() {
+      pageIndex = index;
+    });
   }
 }
