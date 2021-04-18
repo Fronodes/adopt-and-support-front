@@ -48,8 +48,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/831943870375264267/833356280172511262/Screenshot_2021-04-18-18-00-02-818_com.sambapos.cio.jpg" alt="Logo" width="300" height="600" ></p>
 
-[![Product Name Screen Shot][product-screenshot]](https://discord.com/channels/712000429117931605/831943870375264267/833356284345450506)
 Main purpose of the app is to find homes for abondoned animals and has many features.
 
 -Listing abandened animals by province.
