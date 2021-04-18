@@ -1,9 +1,10 @@
-import 'package:adopet/views/donate_screen/donate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../views/create_new_adopted/create_new_adopted.dart';
+import '../../../views/donate_screen/donate_screen.dart';
 import '../../../views/home/home_screen.dart';
+import '../../../views/login_screen/login_screen.dart';
 import '../../../views/pet_detail/pet_detail_screen.dart';
 import '../../../views/view_all/view_all.dart';
 import '../../constants/navigation/navigation_constants.dart';
@@ -27,7 +28,7 @@ class NavigationRoute {
       case NavigationConstants.donate:
         return normalNavigate(DonateScreen());
       default:
-        return normalNavigate(HomeScreen());
+        return normalNavigate(LoginScreen());
     }
   }
 
