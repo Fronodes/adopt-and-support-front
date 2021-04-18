@@ -49,7 +49,7 @@ class ContactPerson extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  user.name,
+                  user.fullName,
                   style: context.headline4
                       .copyWith(fontSize: context.fontSize * 2.8),
                 ),

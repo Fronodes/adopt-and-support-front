@@ -90,7 +90,6 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
         user: User(
           '2',
           'Person',
-          'Here',
           '10310321',
           Address('cadde', 'mahalle', 'fatih', 'istanbul'),
           'mail.com',
