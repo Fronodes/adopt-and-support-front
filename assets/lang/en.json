@@ -17,8 +17,8 @@
 	"dogs": "Dogs",
 	"friends": "Friends",
 	"see_all": "See all",
-	"select_category": "Select Category*",
-	"select_gender": "Select Gender*",
+	"select_category": "Select Category",
+	"select_gender": "Select Gender",
 	"fill_all_required": "Please fill all required areas",
 	"male": "Male",
 	"female": "Female",
@@ -33,5 +33,9 @@
 	"info": "Info",
 	"ok": "Ok",
 	"add_some_photo": "Now,let's add some photos!",
-	"preview": "Preview"
+	"preview": "Preview",
+	"email": "Email",
+	"password": "Password",
+	"login": "Login",
+	"content_added_succesfully": "Content was added successfully"
 }

@@ -21,6 +21,9 @@ class ApplicationProvider {
     ChangeNotifierProvider(
       create: (context) => PetProvider(),
     ),
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    ),
     Provider.value(value: NavigationService.instance)
   ];
   List<SingleChildWidget> uiChangesItems = [];
