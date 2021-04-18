@@ -52,7 +52,8 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         children: [
           InkWell(
-            onTap: () => CategoryApiService().getCategories(),
+            onTap: () => PetApiService()
+                .getPetsByCategories(['607b3ef2d5461925c05227e9']),
             child: TypeItem(
               imagePath: 'cat'.toSVG,
               title: 'cats'.translate,

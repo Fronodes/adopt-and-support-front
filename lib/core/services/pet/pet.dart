@@ -80,7 +80,7 @@ class PetApiService {
     String weight,
     String summary,
     String province,
-    image, 
+    image,
   ) async {
     try {
       var formData = FormData.fromMap({
@@ -91,7 +91,8 @@ class PetApiService {
         'weight': weight,
         'summary': summary,
         'province': province,
-        'image': image // [ await MultipartFile.fromFile(image1, filename: '$image1\_'), await MultipartFile.fromFile(image2, filename: '$image2\_')]
+        'image':
+            image // [ await MultipartFile.fromFile(image1, filename: '$image1\_'), await MultipartFile.fromFile(image2, filename: '$image2\_')]
       });
 
       var response = await _dio.post(
@@ -103,6 +104,22 @@ class PetApiService {
     } on DioError catch (error, stacktrace) {
       print('Exception occured: $error stackTrace: $stacktrace');
       return User.withError('$error');
+    }
+  }
+
+  Future<List<Pet>> getPetsByCategories(List categoryIds) async {
+    var tempPetList = <Pet>[];
+    try {
+      var response = await _dio
+          .post('$_endpoint/bycategories', data: {'categoryIds': categoryIds});
+      var responseData = response.data['pets'];
+
+      responseData.forEach((pet) => tempPetList.add(Pet.fromJson(pet)));
+      print(tempPetList);
+      return tempPetList;
+    } on DioError catch (error, stacktrace) {
+      print('Exception occured: $error stackTrace: $stacktrace');
+      rethrow;
     }
   }
 }
