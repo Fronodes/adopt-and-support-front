@@ -6,18 +6,21 @@ part 'pet_model.g.dart';
 
 @JsonSerializable()
 class Pet {
-  String id;
-  String name;
-  List<String> photoUrls;
-  String type;
-  String gender;
-  int age;
-  double weight;
-  String summary;
-  User owner;
+  late String id;
+  late String name;
+  late List<String> photoUrls;
+  late String type;
+  late String gender;
+  late int age;
+  late double weight;
+  late String summary;
+  late String? error;
+  late User? owner;
 
   Pet(this.id, this.name, this.photoUrls, this.type, this.gender, this.age,
       this.weight, this.summary, this.owner);
   factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
   Map<String, dynamic> toJson() => _$PetToJson(this);
+
+  Pet.withError(this.error);
 }
