@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sambapos.cio">
+    package="com.fronodes.adopet">
    <application
-        android:label="cio"
+        android:label="adopet"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

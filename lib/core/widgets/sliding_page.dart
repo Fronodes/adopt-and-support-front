@@ -8,12 +8,15 @@ class SlidingPage extends StatelessWidget {
   final List photoUrls;
   final Function(int) func;
   final PageController controller;
+  final String id;
   final int currentIndex;
   const SlidingPage(
       {required this.func,
       required this.controller,
       required this.photoUrls,
-      required this.currentIndex, this.type});
+      required this.id,
+      required this.currentIndex,
+      this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +39,18 @@ class SlidingPage extends StatelessWidget {
           (photo) => Padding(
             padding: context.highPadding,
             child: Hero(
-              tag: photo,
+              tag: id,
               child: ClipRRect(
                 borderRadius: context.highCircular,
-                child: (type==null || kIsWeb) ? Image.network(
-                  photo,
-                  fit: BoxFit.cover,
-                ):Image.asset(
-                  photo,
-                  fit: BoxFit.cover,
-                ),
+                child: (type == null || kIsWeb)
+                    ? Image.network(
+                        'https://e28c51664e12.ngrok.io$photo',
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(
+                        'https://e28c51664e12.ngrok.io$photo',
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
           ),

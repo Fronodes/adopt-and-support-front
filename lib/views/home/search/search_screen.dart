@@ -8,6 +8,7 @@ typedef OnSearchChanged = Future<List<String>> Function(String);
 
 class Search extends SearchDelegate<Pet> {
   List<Pet> pets;
+  final GlobalKey<State> key = GlobalKey<State>();
 
   Search({required this.pets})
       : super(
@@ -30,7 +31,7 @@ class Search extends SearchDelegate<Pet> {
               padding: context.rightLow,
               icon: Icon(Icons.search),
               onPressed: () async {
-                await showResults(context);
+                showResults(context);
               },
             )
           ];
@@ -53,7 +54,11 @@ class Search extends SearchDelegate<Pet> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final petList = Provider.of<PetProvider>(context).queryResults;
+    var petList = Provider.of<PetProvider>(context, listen: false)
+        .pets
+        .where((element) =>
+            element.province.toLowerCase().startsWith(query.toLowerCase()))
+        .toList();
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) => PetSearchItem(
@@ -70,10 +75,15 @@ class Search extends SearchDelegate<Pet> {
         .where((element) =>
             element['name'].toLowerCase().startsWith(query.toLowerCase()))
         .toList();
+    final petList = Provider.of<PetProvider>(context, listen: false).pets;
     return query.isEmpty
-        ? Container(
-            margin: context.horizontalMedium,
-            child: Text('buraya rastgele öneriler koyulacak'),
+        ? ListView.builder(
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context, index) => PetSearchItem(
+              pet: petList[index],
+            ),
+            itemCount: petList.length > 5 ? 5 : petList.length,
+            shrinkWrap: true,
           )
         : suggestionListBuild(context, suggestionList);
   }
@@ -84,7 +94,7 @@ class Search extends SearchDelegate<Pet> {
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) => ListTile(
-          onTap: () {
+          onTap: () async {
             query = suggestionList[index]['name'];
             showResults(context);
           },

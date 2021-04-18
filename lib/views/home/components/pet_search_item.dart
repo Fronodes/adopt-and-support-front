@@ -8,8 +8,37 @@ class PetSearchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [getPhoto(context)],
+    return Container(
+      height: context.height * 10,
+      margin: context.lowPadding,
+      padding: context.mediumPadding,
+      decoration: BoxDeco().donateCard(context),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(child: getPhoto(context)),
+          SizedBox(width: context.width * 5),
+          Expanded(
+            flex: 4,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(pet.name,
+                      style: context.headline3, textAlign: TextAlign.start),
+                ),
+                SizedBox(
+                  height: context.height * .6,
+                ),
+                LocationRow(
+                  text: pet.owner!.address.province,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 

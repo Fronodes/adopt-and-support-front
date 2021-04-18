@@ -1,3 +1,4 @@
+import 'package:adopet/views/donate_screen/donate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -23,6 +24,8 @@ class NavigationRoute {
         return normalNavigate(PetDetailScreen());
       case NavigationConstants.viewAll:
         return normalNavigate(ViewAll());
+      case NavigationConstants.donate:
+        return normalNavigate(DonateScreen());
       default:
         return normalNavigate(HomeScreen());
     }

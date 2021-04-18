@@ -16,9 +16,10 @@ class Pet {
   late String summary;
   late String? error;
   late User? owner;
+  late String province;
 
   Pet(this.id, this.name, this.photoUrls, this.type, this.gender, this.age,
-      this.weight, this.summary, this.owner);
+      this.weight, this.summary, this.owner, this.province);
   factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
   Map<String, dynamic> toJson() => _$PetToJson(this);
 

@@ -1,4 +1,4 @@
-package com.sambapos.adopt_and_support_front
+package com.fronodes.adopt_and_support_front
 
 import io.flutter.embedding.android.FlutterActivity
 

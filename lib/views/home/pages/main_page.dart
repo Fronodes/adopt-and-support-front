@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/constants_shelf.dart';
 import '../../../core/core_shelf.dart';
 import '../components/components_shelf.dart';
 
@@ -9,11 +10,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<String> selectedItems = [];
+  List<String> selectedItems = ['cats'];
   List<Pet> pets = [];
 
   Future<bool> getInitialData() async {
-    var petProv = Provider.of<PetProvider>(context);
+    var petProv = Provider.of<PetProvider>(context, listen: false);
     pets = await petProv.getPets();
     return true;
   }
@@ -48,10 +49,14 @@ class _MainPageState extends State<MainPage> {
         SizedBox(height: context.height * .7),
         Expanded(
           flex: 4,
-          child: Container(
-            height: context.height * 15,
-            margin: context.horizontalMedium,
-            child: DonateUs(),
+          child: InkWell(
+            onTap: () => NavigationService.instance
+                .navigateToPage(path: NavigationConstants.donate),
+            child: Container(
+              height: context.height * 15,
+              margin: context.horizontalMedium,
+              child: DonateUs(),
+            ),
           ),
         ),
         SizedBox(height: context.height * 3),

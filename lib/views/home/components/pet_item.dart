@@ -10,8 +10,11 @@ class PetItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => NavigationService.instance
-          .navigateToPage(path: NavigationConstants.petDetail),
+      onTap: () {
+        Provider.of<PetProvider>(context, listen: false).selectedPet = pet;
+        NavigationService.instance
+            .navigateToPage(path: NavigationConstants.petDetail);
+      },
       child: Container(
         margin: EdgeInsets.only(right: context.width * 4),
         width: context.width * 50,

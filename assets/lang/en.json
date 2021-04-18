@@ -35,5 +35,6 @@
 	"add_some_photo": "Now,let's add some photos!",
 	"preview": "Preview",
 	"payment_method": "Payment Method",
-	"cant_remove_type": "You have to select a type!"
+	"cant_remove_type": "You have to select a type!",
+	"please_wait": "Please Wait..."
 }

@@ -24,7 +24,7 @@ class _DonateScreenState extends State<DonateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(context, 'donate_us'.translate, 'donate'),
+      appBar: getAppBar(context, 'donate_us'.translate, 'close'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

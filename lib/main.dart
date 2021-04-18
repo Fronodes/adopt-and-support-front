@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LanguageProvider>(
       builder: (context, modal, child) => MaterialApp(
-        title: 'SambaPOS CIO',
+        title: 'Adopet',
         debugShowCheckedModeBanner: false,
         theme: getLightTheme(),
         localizationsDelegates: [...AppLocalizations.localDelegates],

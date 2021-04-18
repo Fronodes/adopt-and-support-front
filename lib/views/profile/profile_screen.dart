@@ -113,12 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget getTabBarView(BuildContext context) {
-    List<Pet> petList = [];
-    for (var i = 0; i < 2; i++) {
-      var pet = getDummyPet();
-      pet.id = i.toString();
-      petList.add(pet);
-    }
+    final petList = Provider.of<PetProvider>(context, listen: false).pets;
     return Expanded(
       child: TabBarView(
         physics: BouncingScrollPhysics(),

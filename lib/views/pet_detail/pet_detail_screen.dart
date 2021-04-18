@@ -15,7 +15,7 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    pet = Provider.of<PetProvider>(context).getSelectedPet();
+    pet = Provider.of<PetProvider>(context, listen: false).getSelectedPet();
     return Scaffold(
       appBar: getAppBar(context, pet!.name, 'detail'),
       body: Padding(
@@ -39,6 +39,7 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
         func: setIndex,
         controller: controller,
         photoUrls: pet!.photoUrls,
+        id: pet!.id,
         currentIndex: currentIndex,
       ),
     );

@@ -17,6 +17,7 @@ Pet _$PetFromJson(Map<String, dynamic> json) {
     (json['weight'] as num).toDouble(),
     json['summary'] as String,
     User.fromJson(json['owner'] as Map<String, dynamic>),
+    json['province'] as String,
   );
 }
 
@@ -30,4 +31,5 @@ Map<String, dynamic> _$PetToJson(Pet instance) => <String, dynamic>{
       'weight': instance.weight,
       'summary': instance.summary,
       'owner': instance.owner,
+      'province': instance.province,
     };

@@ -39,6 +39,7 @@ Widget getSlidingBar(BuildContext context, int currentIndex,
       func: setIndex,
       controller: controller,
       photoUrls: tempList,
+      id: DateTime.now().toString(),
       currentIndex: currentIndex,
     ),
   );

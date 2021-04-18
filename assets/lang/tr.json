@@ -22,5 +22,6 @@
   "info": "Bilgiler",
   "ok": "Tamam",
   "payment_method": "Ödeme Yöntemi",
-  "cant_remove_type": "Bir tür seçmek zorundasın!"
+  "cant_remove_type": "Bir tür seçmek zorundasın!",
+  "please_wait": "Lütfen Bekle..."
 }
