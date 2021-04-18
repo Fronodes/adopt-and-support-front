@@ -17,7 +17,6 @@ class PetProvider extends ChangeNotifier {
       User(
           '2',
           'Person',
-          'Here',
           '10310321',
           Address('cadde', 'mahalle', 'fatih', 'istanbul'),
           'mail.com',
@@ -40,7 +39,6 @@ class PetProvider extends ChangeNotifier {
     User(
         '2',
         'Person',
-        'Here',
         '10310321',
         Address('cadde', 'mahalle', 'fatih', 'istanbul'),
         'mail.com',

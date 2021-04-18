@@ -2,8 +2,6 @@ part of '../create_new_adopted.dart';
 
 LayoutBuilder _imageSection(BuildContext context, Widget errorWidget,
     List<File> item, Function(File) onPressed) {
-  var _picker = ImagePicker();
-
   var tmpList = [
     ...item.map((item) => Padding(
         padding: context.mediumPadding,
@@ -12,15 +10,8 @@ LayoutBuilder _imageSection(BuildContext context, Widget errorWidget,
         ))),
     Padding(
       padding: context.mediumPadding,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: context.canvas),
-          onPressed: () async {
-            var source = await _picker.getImage(source: ImageSource.gallery);
-            var _file = File(source!.path);
-            onPressed(_file);
-          },
-          child: Container(child: Icon(Icons.add, color: context.primary))),
-    )
+      child: AddImageLargeButton(onPressed: onPressed),
+    ),
   ];
   return LayoutBuilder(
     builder: (ctx, cntrnts) => GridView.count(

@@ -13,7 +13,6 @@ Pet getDummyPet() {
     User(
         '2',
         'Person',
-        'Here',
         '10310321',
         Address('cadde', 'mahalle', 'fatih', 'istanbul'),
         'mail.com',

@@ -4,7 +4,8 @@ import '../../../core/core_shelf.dart';
 
 class PetItem extends StatelessWidget {
   final Pet pet;
-  const PetItem({required this.pet});
+  final String type;
+  const PetItem({required this.pet, this.type = 'pet'});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,11 @@ class PetItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: getPhoto(context)),
-            SizedBox(height: context.height * 1.2),
+            getPhoto(context),
+            SizedBox(height: context.height * 1.5),
             getPetName(context),
-            SizedBox(height: context.height * .4),
-            LocationRow(text: pet.summary)
+            SizedBox(height: context.height * .5),
+            type == 'pet' ? LocationRow(text: pet.summary) : Container()
           ],
         ),
       ),
@@ -30,7 +31,7 @@ class PetItem extends StatelessWidget {
 
   Widget getPhoto(BuildContext context) {
     return Hero(
-      tag: pet.photoUrls[0],
+      tag: pet.id,
       child: ClipRRect(
         borderRadius: context.highCircular,
         child: Image.network(

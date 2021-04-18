@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/core_shelf.dart';
+import '../profile/profile_screen.dart';
 import 'pages/main_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,8 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
           height: context.height * 7.8,
           items: <Widget>[
             getIcon(pageIndex == 0 ? Icons.home : Icons.home_outlined, 0),
-            getIcon(pageIndex == 1 ? Icons.notifications :Icons.notifications_outlined, 1),
-            getIcon(pageIndex == 2 ? Icons.person :Icons.person_outline, 2),
+            getIcon(
+                pageIndex == 1
+                    ? Icons.notifications
+                    : Icons.notifications_outlined,
+                1),
+            getIcon(pageIndex == 2 ? Icons.person : Icons.person_outline, 2),
           ],
           onTap: (index) {
             setState(() {
@@ -30,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
         ),
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         body: getBody());
   }
 
@@ -43,6 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getBody() {
-    return pageIndex == 0 ? MainPage() : Container();
+    return pageIndex == 0
+        ? MainPage()
+        : (pageIndex == 2 ? ProfileScreen() : Container());
   }
 }
