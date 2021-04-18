@@ -47,9 +47,9 @@
 <b>Main purpose of the app is to find homes for abondoned animals and has many features.</b>
 
 
-* -Listing abandened animals by province.
+* -Listing abandoned animals by province.
 
-* -Listing abandened animals by type.
+* -Listing abandoned animals by type.
 
 * -Sharing their photos.
 
