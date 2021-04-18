@@ -56,8 +56,11 @@ class UserApiService {
           PreferencesKeys.accessToken, response.data['accessToken']);
       return User.fromJson(response.data['user']);
     } on DioError catch (error, stacktrace) {
+      var api = LanguageProvider();
       print('Exception occured: $error stackTrace: $stacktrace');
-      return User.withError('$error');
+      throw Exception(api.appLocal.languageCode == 'en'
+          ? '${error.response?.data['resultMessage']['en']}'
+          : '${error.response?.data['resultMessage']['tr']}');
     }
   }
 }

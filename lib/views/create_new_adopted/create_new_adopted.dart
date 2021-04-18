@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../core/core_shelf.dart';
 import '../home/components/type_item.dart';
@@ -32,7 +30,7 @@ class CreateNewAdopted extends StatefulWidget {
 
 class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   final int _stepLength = 5;
-  static int _index = 5;
+  static int _index = 1;
   static int _slidingIndex = 0;
   static Gender? _gender;
   var _tempAgeText = '';
@@ -156,28 +154,32 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
     }
   }
 
-  void onSave(val) => setState(() {
-        if (_index == 1 && _gender != null && _selectedType != '') {
-          _index++;
-          _errorText = '';
-        } else if (_index == 2 && _textController[0].text != '') {
-          _index++;
-          _errorText = '';
-        } else if (_index == 3 &&
-            _textController[1].text != '' &&
-            _textController[2].text != '') {
-          _index++;
-          _errorText = '';
-        } else if (_index == 4 && _textController[3].text != '') {
-          _index++;
-          _errorText = '';
-        } else if (_index == 5 && _imageFiles.isNotEmpty) {
-          _index++;
-          _errorText = '';
-        } else {
-          _errorText = 'fill_all_required'.translate;
-        }
-      });
+  void onSave(val) {
+    setState(() {
+      if (_index == 1 && _gender != null && _selectedType != '') {
+        _index++;
+        _errorText = '';
+      } else if (_index == 2 && _textController[0].text != '') {
+        _index++;
+        _errorText = '';
+      } else if (_index == 3 &&
+          _textController[1].text != '' &&
+          _textController[2].text != '') {
+        _index++;
+        _errorText = '';
+      } else if (_index == 4 && _textController[3].text != '') {
+        _index++;
+        _errorText = '';
+      } else if (_index == 5 && _imageFiles.isNotEmpty) {
+        _index++;
+        _errorText = '';
+      } else if (_index == 6) {
+        NavigationService.instance.pop();
+      } else {
+        _errorText = 'fill_all_required'.translate;
+      }
+    });
+  }
 
   void _onWeightChange(val) {
     var _demo = '';

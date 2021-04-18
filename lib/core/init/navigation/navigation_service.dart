@@ -17,8 +17,8 @@ class NavigationService implements INavigationService {
     await navigatorKey.currentState?.pushNamed(path, arguments: data);
   }
 
-  void pop() {
-    navigatorKey.currentState?.pop();
+  void pop({String? val}) {
+    navigatorKey.currentState?.pop(val);
   }
 
   @override

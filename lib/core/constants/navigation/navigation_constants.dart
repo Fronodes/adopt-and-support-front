@@ -4,4 +4,5 @@ class NavigationConstants {
   static const petDetail = '/petDetail';
   static const viewAll = '/viewAll';
   static const donate = '/donate';
+  static const login = '/login';
 }

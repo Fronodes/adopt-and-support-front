@@ -28,7 +28,7 @@ class NavigationRoute {
       case NavigationConstants.donate:
         return normalNavigate(DonateScreen());
       default:
-        return normalNavigate(LoginScreen());
+        return normalNavigate(HomeScreen());
     }
   }
 

@@ -72,18 +72,20 @@ Widget getSummary(BuildContext context, String summary) {
     ),
     constraints: BoxConstraints(maxHeight: context.height * 9),
     alignment: Alignment.centerLeft,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('summary'.translate, style: context.headline3),
-        SizedBox(
-          height: context.height * 1.1,
-        ),
-        Text(
-          summary,
-          style: context.headline4.copyWith(color: Colors.black54),
-        )
-      ],
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('summary'.translate, style: context.headline3),
+          SizedBox(
+            height: context.height * 1.1,
+          ),
+          Text(
+            summary,
+            style: context.headline4.copyWith(color: Colors.black54),
+          )
+        ],
+      ),
     ),
   );
 }
