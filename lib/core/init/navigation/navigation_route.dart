@@ -1,3 +1,4 @@
+import 'package:cio/views/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -24,7 +25,7 @@ class NavigationRoute {
       case NavigationConstants.viewAll:
         return normalNavigate(ViewAll());
       default:
-        return normalNavigate(CreateNewAdopted());
+        return normalNavigate(LoginScreen());
     }
   }
 
