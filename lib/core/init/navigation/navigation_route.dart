@@ -24,7 +24,7 @@ class NavigationRoute {
       case NavigationConstants.viewAll:
         return normalNavigate(ViewAll());
       default:
-        return normalNavigate(HomeScreen());
+        return normalNavigate(CreateNewAdopted());
     }
   }
 

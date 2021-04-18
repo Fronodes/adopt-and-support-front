@@ -13,6 +13,7 @@ Row _buttons(BuildContext context, int index, Function() goback,
             ),
       FloatingActionButton(
         foregroundColor: context.canvas,
+        backgroundColor: context.primary,
         onPressed: () => onSave(''),
         child: Icon(index == 6 ? Icons.done : Icons.arrow_right_alt),
       ),
