@@ -40,4 +40,8 @@ class PetProvider extends ChangeNotifier {
     pets = await PetApiService().getAllPets();
     return pets;
   }
+
+  Future<List<Pet>> searchPet() async {
+    queryResults = await PetApiService().getAllPets();
+  }
 }

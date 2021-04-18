@@ -18,4 +18,17 @@ class PetApiService {
       rethrow;
     }
   }
+
+  Future<List<Pet>> searchPets() async {
+    var tempPetList = <Pet>[];
+    try {
+      var response = await _dio.get(_endpoint);
+      var responseData = response.data['pets'];
+      responseData.forEach((pet) => tempPetList.add(Pet.fromJson(pet)));
+      return tempPetList;
+    } on DioError catch (error, stacktrace) {
+      print('Exception occured: $error stackTrace: $stacktrace');
+      rethrow;
+    }
+  }
 }

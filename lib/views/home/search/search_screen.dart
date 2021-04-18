@@ -29,8 +29,8 @@ class Search extends SearchDelegate<Pet> {
             IconButton(
               padding: context.rightLow,
               icon: Icon(Icons.search),
-              onPressed: () {
-                showResults(context);
+              onPressed: () async {
+                await showResults(context);
               },
             )
           ];
@@ -53,12 +53,13 @@ class Search extends SearchDelegate<Pet> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final suggestionList = getTurkeyCities().where((element) =>
-        element['name'].toLowerCase().startsWith(query.toLowerCase()));
+    final petList = Provider.of<PetProvider>(context).queryResults;
     return ListView.builder(
       physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) => PetSearchItem(),
-      itemCount: suggestionList.length,
+      itemBuilder: (context, index) => PetSearchItem(
+        pet: petList[index],
+      ),
+      itemCount: petList.length,
       shrinkWrap: true,
     );
   }
