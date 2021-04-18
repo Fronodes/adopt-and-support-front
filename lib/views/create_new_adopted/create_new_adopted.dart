@@ -1,21 +1,21 @@
 import 'dart:io';
 
-import 'package:cio/views/pet_detail/components/detail_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../core/core_shelf.dart';
 import '../home/components/type_item.dart';
+import '../pet_detail/components/detail_item.dart';
 
 part 'layout/button_widget.dart';
-part 'layout/text_field_widget.dart';
+part 'layout/error_text_widget.dart';
 part 'layout/selected_gender_widget.dart';
 part 'layout/selected_type_widget.dart';
 part 'layout/step_order_widget.dart';
 part 'layout/step_widget.dart';
-part 'layout/error_text_widget.dart';
-
+part 'layout/text_field_widget.dart';
 part 'view/age_and_weight_section.dart';
 part 'view/gender_and_type_section.dart';
 part 'view/image_section.dart';
@@ -32,7 +32,7 @@ class CreateNewAdopted extends StatefulWidget {
 
 class _CreateNewAdoptedState extends State<CreateNewAdopted> {
   final int _stepLength = 5;
-  static int _index = 1;
+  static int _index = 5;
   static int _slidingIndex = 0;
   static Gender? _gender;
   var _tempAgeText = '';

@@ -1,4 +1,4 @@
-import 'package:cio/core/constants/constants_shelf.dart';
+import '../constants/constants_shelf.dart';
 
 extension GenderExtension on Gender {
   String get toStr {
