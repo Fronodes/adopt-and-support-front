@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-<img src="https://cdn.discordapp.com/attachments/831943870375264267/833354450973360188/PugLogo_1.png" alt="Logo" width="120" height="120">
+<img src="https://cdn.discordapp.com/attachments/831943870375264267/833360987003682836/logo2.png" alt="Logo" width="120" height="120">
   </p>
 <p align="center">
   <a href="https://github.com/Fronodes/adopt-and-support-front>
