@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../core/core_shelf.dart';
-import '../../core/dummy/dummy_pet.dart';
 
 class ViewAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Pet> petList = [];
-    for (var i = 0; i < 10; i++) {
-      var pet = getDummyPet();
-      pet.id = i.toString();
-      petList.add(pet);
-    }
+    List<Pet> petList = Provider.of<PetProvider>(context).pets;
+
     return Scaffold(
       appBar: getAppBar(context, 'see_all'.translate, 'close'),
       body: Padding(

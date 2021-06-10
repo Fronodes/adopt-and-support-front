@@ -76,7 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               .loginUser(
                                   emailController.text, passwordController.text)
                               .then((value) {
-                            var _userProvider = UserProvider();
+                            var _userProvider = Provider.of<UserProvider>(
+                                context,
+                                listen: false);
                             _userProvider.login(value);
                             Navigator.pushReplacementNamed(context, '/home');
                           }).catchError((onError) {

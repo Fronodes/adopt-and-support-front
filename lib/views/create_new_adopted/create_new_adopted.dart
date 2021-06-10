@@ -68,31 +68,33 @@ class _CreateNewAdoptedState extends State<CreateNewAdopted> {
     return Scaffold(
       appBar: getAppBar(context,
           _index == 6 ? 'preview'.translate : 'add_new'.translate, 'close'),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          if (_index != 6)
-            ...{
-              _step(context, _index, _stepLength),
-              Expanded(child: _body(context)),
-            }.toList(),
-          if (_index == 6)
-            Expanded(
-              child: preview(
-                  context,
-                  _gender!,
-                  _textController[1].text,
-                  _textController[2].text,
-                  _textController[3].text,
-                  _slidingIndex,
-                  _imageFiles,
-                  (val) => setState(() => _slidingIndex = val)),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (_index != 6)
+              ...{
+                _step(context, _index, _stepLength),
+                Expanded(child: _body(context)),
+              }.toList(),
+            if (_index == 6)
+              Expanded(
+                child: preview(
+                    context,
+                    _gender!,
+                    _textController[1].text,
+                    _textController[2].text,
+                    _textController[3].text,
+                    _slidingIndex,
+                    _imageFiles,
+                    (val) => setState(() => _slidingIndex = val)),
+              ),
+            Padding(
+              padding: context.mediumPadding,
+              child: _buttons(context, _index, _goBack, onSave),
             ),
-          Padding(
-            padding: context.mediumPadding,
-            child: _buttons(context, _index, _goBack, onSave),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -15,7 +15,10 @@ class _MainPageState extends State<MainPage> {
 
   Future<bool> getInitialData() async {
     var petProv = Provider.of<PetProvider>(context, listen: false);
+    print('hi');
+    print(await petProv.getPets());
     pets = await petProv.getPets();
+    print(pets);
     return true;
   }
 

@@ -7,7 +7,7 @@ Row _selectTypeButton(
       InkWell(
         onTap: () => onSelect('cats'),
         child: TypeItem(
-          size: context.height * 22,
+          size: context.height * 15,
           imagePath: 'cat'.toSVG,
           title: 'cats'.translate,
           isSelected: type == 'cats',
@@ -17,7 +17,7 @@ Row _selectTypeButton(
       InkWell(
         onTap: () => onSelect('dogs'),
         child: TypeItem(
-          size: context.height * 22,
+          size: context.height * 15,
           imagePath: 'dog'.toSVG,
           title: 'dogs'.translate,
           isSelected: type == 'dogs',

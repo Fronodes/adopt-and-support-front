@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../../core_shelf.dart';
 
 class UserApiService {
-  final String _endpoint = 'https://e28c51664e12.ngrok.io/api/user';
+  final String _endpoint = 'https://f682c61e0edc.ngrok.io/api/user';
   final Dio _dio = Dio();
 
   Future registerUser(

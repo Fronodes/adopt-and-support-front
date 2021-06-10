@@ -26,7 +26,7 @@ class PetItem extends StatelessWidget {
             Expanded(child: getPetName(context)),
             SizedBox(height: context.height * .3),
             type == 'pet'
-                ? Expanded(child: LocationRow(text: pet.summary))
+                ? Expanded(child: LocationRow(text: pet.province))
                 : Container()
           ],
         ),
@@ -43,7 +43,7 @@ class PetItem extends StatelessWidget {
           placeholder: 'loading'.gifPath,
           width: context.width * 48,
           fit: BoxFit.cover,
-          image: 'https://e28c51664e12.ngrok.io${pet.photoUrls[0]}',
+          image: 'https://f682c61e0edc.ngrok.io${pet.photoUrls[0]}',
         ),
       ),
     );

@@ -10,7 +10,7 @@ Row _selectGenderButton(
       InkWell(
         onTap: () => onSelect(Gender.male),
         child: TypeItem(
-          size: context.height * 22,
+          size: context.height * 15,
           imagePath: 'male'.toSVG,
           title: 'male'.translate,
           isSelected: _gender == Gender.male,
@@ -20,7 +20,7 @@ Row _selectGenderButton(
       InkWell(
         onTap: () => onSelect(Gender.female),
         child: TypeItem(
-          size: context.height * 22,
+          size: context.height * 15,
           imagePath: 'female'.toSVG,
           title: 'female'.translate,
           isSelected: _gender == Gender.female,

@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import '../core_shelf.dart';
 
 PreferredSize getAppBar(BuildContext context, String title, String type,
-    {Function? func}) {
+    {Function? func, bool? isFav}) {
   return PreferredSize(
     preferredSize: Size.fromHeight(context.height * 6.6),
     child: AppBar(
       backgroundColor: context.canvas,
       brightness: Brightness.light,
-      flexibleSpace: mainContainer(context, title, type, func: func),
+      flexibleSpace:
+          mainContainer(context, title, type, func: func, isFav: isFav),
       automaticallyImplyLeading: false,
     ),
   );
 }
 
 Widget mainContainer(BuildContext context, String title, String type,
-    {Function? func}) {
+    {Function? func, bool? isFav}) {
   return Align(
     alignment: Alignment.bottomLeft,
     child: Padding(
@@ -29,7 +30,7 @@ Widget mainContainer(BuildContext context, String title, String type,
           screenText(context, title),
           Spacer(),
           type == 'detail'
-              ? favoriteIcon(context, func)
+              ? favoriteIcon(context, func, isFav)
               : (type == 'close' ? closeIcon(context) : Container())
         ],
       ),
@@ -78,7 +79,7 @@ Widget screenText(BuildContext context, title) {
   );
 }
 
-Widget favoriteIcon(BuildContext context, func) {
+Widget favoriteIcon(BuildContext context, func, isFav) {
   //TODO: Providerdan alınacak
   var isFavorite = false;
   return Padding(
@@ -86,7 +87,7 @@ Widget favoriteIcon(BuildContext context, func) {
     child: InkWell(
       onTap: func,
       child: Icon(
-        Icons.favorite_border_outlined,
+        isFav ? Icons.favorite : Icons.favorite_border_outlined,
         color: Colors.red,
         size: context.width * 5.8,
       ),

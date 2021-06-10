@@ -16,17 +16,26 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
   @override
   Widget build(BuildContext context) {
     pet = Provider.of<PetProvider>(context, listen: false).getSelectedPet();
-    return Scaffold(
-      appBar: getAppBar(context, pet!.name, 'detail'),
-      body: Padding(
-        padding: context.bottomExtreme,
-        child: Column(
-          children: [
-            Expanded(flex: 4, child: getSlidingBar()),
-            Expanded(flex: 2, child: getInfoRow()),
-            Expanded(flex: 2, child: getSummary()),
-            Expanded(flex: 2, child: getContact()),
-          ],
+    var user = Provider.of<UserProvider>(context, listen: false);
+    return Consumer<PetProvider>(
+      builder: (ctx, petProv, child) => Scaffold(
+        appBar: getAppBar(context, pet!.name, 'detail', func: () async {
+          var petProv = Provider.of<PetProvider>(context, listen: false);
+          var res = await petProv.addToFav(pet!.id);
+          if (res) {
+            await user.addToFav(pet!.id);
+          }
+        }, isFav: user.user.favorites!.contains(pet!.id)),
+        body: Padding(
+          padding: context.bottomExtreme,
+          child: Column(
+            children: [
+              Expanded(flex: 4, child: getSlidingBar()),
+              Expanded(flex: 2, child: getInfoRow()),
+              Expanded(flex: 2, child: getSummary()),
+              Expanded(flex: 2, child: getContact()),
+            ],
+          ),
         ),
       ),
     );
@@ -52,9 +61,14 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(child: DetailItem(title: 'gender'.translate, info: 'Male')),
-          Expanded(child: DetailItem(title: 'age'.translate, info: '2')),
-          Expanded(child: DetailItem(title: 'weight'.translate, info: '3.5kg')),
+          Expanded(
+              child: DetailItem(title: 'gender'.translate, info: pet!.gender)),
+          Expanded(
+              child: DetailItem(
+                  title: 'age'.translate, info: pet!.age.toString())),
+          Expanded(
+              child: DetailItem(
+                  title: 'weight'.translate, info: pet!.weight.toString())),
         ],
       ),
     );
@@ -74,11 +88,14 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
           SizedBox(
             height: context.height * 1.1,
           ),
-          Text(
-            pet!.summary,
-            style: context.headline4.copyWith(color: Colors.black54),
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Text(
+                pet?.summary ?? '',
+                style: context.headline4.copyWith(color: Colors.black54),
+              ),
+            ),
           )
         ],
       ),
@@ -91,17 +108,7 @@ class _PetDetailScreenState extends State<PetDetailScreen> {
       margin: context.topMedium,
       width: double.infinity,
       height: context.height * 14,
-      child: ContactPerson(
-        user: User(
-          '2',
-          'Person',
-          '10310321',
-          Address('cadde', 'mahalle', 'fatih', 'istanbul'),
-          'mail.com',
-          'https://lh3.googleusercontent.com/proxy/WuRYekBXXGwia0qeZJ_8cOVXVwdLbeLO8NFPmgmYWmQlCO7G_8kI6R7rxt9cYOJn-8WFPA6wSEMIBKVRcvg6RiDQgVu_LfBxBPZZthFhO2CdBqmeCl56oQ',
-          [],
-        ),
-      ),
+      child: ContactPerson(user: pet!.owner!),
     );
   }
 

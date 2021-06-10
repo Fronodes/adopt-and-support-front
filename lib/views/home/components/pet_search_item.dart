@@ -50,7 +50,7 @@ class PetSearchItem extends StatelessWidget {
         child: FadeInImage.assetNetwork(
           placeholder: 'loading'.gifPath,
           fit: BoxFit.cover,
-          image: 'https://e28c51664e12.ngrok.io${pet.photoUrls[0]}',
+          image: 'https://f682c61e0edc.ngrok.io${pet.photoUrls[0]}',
         ),
       ),
     );

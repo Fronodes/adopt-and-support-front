@@ -5,7 +5,9 @@ import '../services/pet/pet.dart';
 
 class PetProvider extends ChangeNotifier {
   List<Pet> queryResults = [];
+
   List<Pet> pets = [];
+
   Pet? selectedPet = Pet(
       '1',
       'Kedi',
@@ -40,5 +42,17 @@ class PetProvider extends ChangeNotifier {
   Future<List<Pet>> searchPet(String province) async {
     queryResults = await PetApiService().getPetsByProvince(province);
     return queryResults;
+  }
+
+  Future<bool> addToFav(petId) async {
+    try {
+      await PetApiService().addToFavoritePets(petId);
+      notifyListeners();
+
+      return true;
+    } catch (e) {
+      notifyListeners();
+      return false;
+    }
   }
 }

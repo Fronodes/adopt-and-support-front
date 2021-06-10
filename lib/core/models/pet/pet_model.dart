@@ -6,6 +6,7 @@ part 'pet_model.g.dart';
 
 @JsonSerializable()
 class Pet {
+  @JsonKey(name: '_id')
   late String id;
   late String name;
   late List<String> photoUrls;
@@ -20,7 +21,9 @@ class Pet {
 
   Pet(this.id, this.name, this.photoUrls, this.type, this.gender, this.age,
       this.weight, this.summary, this.owner, this.province);
-  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+  factory Pet.fromJson(Map<String, dynamic> json) {
+    return _$PetFromJson(json);
+  }
   Map<String, dynamic> toJson() => _$PetToJson(this);
 
   Pet.withError(this.error);

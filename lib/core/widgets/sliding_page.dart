@@ -44,11 +44,11 @@ class SlidingPage extends StatelessWidget {
                 borderRadius: context.highCircular,
                 child: (type == null || kIsWeb)
                     ? Image.network(
-                        'https://e28c51664e12.ngrok.io$photo',
+                        'https://f682c61e0edc.ngrok.io$photo',
                         fit: BoxFit.cover,
                       )
                     : Image.asset(
-                        'https://e28c51664e12.ngrok.io$photo',
+                        'https://f682c61e0edc.ngrok.io$photo',
                         fit: BoxFit.cover,
                       ),
               ),

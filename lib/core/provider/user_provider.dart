@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import '../core_shelf.dart';
 
 class UserProvider extends ChangeNotifier {
-  late User _user;
-  User get user => _user;
-  void login(user) {
-    _user = user;
+  User? _user;
+  User get user => _user!;
+  void login(uuser) {
+    _user = uuser;
+    notifyListeners();
+  }
+
+  Future<void> addToFav(id) async {
+    !_user!.favorites!.contains(id)
+        ? _user!.favorites!.add(id)
+        : _user!.favorites!.remove(id);
     notifyListeners();
   }
 }

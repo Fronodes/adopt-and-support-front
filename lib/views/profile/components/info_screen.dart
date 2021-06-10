@@ -1,58 +1,55 @@
+import 'package:adopet/core/core_shelf.dart';
+import 'package:adopet/core/provider/provider_shelf.dart';
 import 'package:flutter/material.dart';
 
 import '../functions/edit_text.dart';
 import 'info_row.dart';
 
 class InfoScreen extends StatefulWidget {
+  final User user;
+
+  const InfoScreen({Key? key, required this.user}) : super(key: key);
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
 
 class _InfoScreenState extends State<InfoScreen> {
-  List itemList = [
-    {
-      'icon': Icons.email,
-      'controller': TextEditingController(),
-      'editFunction': () {},
-      'initialText': 'email'
-    },
-    {
-      'icon': Icons.phone,
-      'controller': TextEditingController(),
-      'editFunction': () {},
-      'initialText': 'phone'
-    },
-    {
-      'icon': Icons.navigation,
-      'controller': TextEditingController(),
-      'editFunction': () {},
-      'initialText': 'address'
-    },
-    {
-      'icon': Icons.person,
-      'controller': TextEditingController(),
-      'editFunction': () {},
-      'initialText': 'fullname'
-    }
-  ];
+  List itemList = [];
+  @override
+  void initState() {
+    super.initState();
+    itemList = [
+      {
+        'icon': Icons.email,
+        'controller': TextEditingController(text: widget.user.email),
+        'editFunction': () {},
+        'initialText': 'email'
+      },
+      {
+        'icon': Icons.phone,
+        'controller': TextEditingController(text: widget.user.phoneNumber),
+        'editFunction': () {},
+        'initialText': 'phone'
+      },
+      {
+        'icon': Icons.person,
+        'controller': TextEditingController(text: widget.user.fullName),
+        'editFunction': () {},
+        'initialText': 'fullname'
+      }
+    ];
+    itemList[0]['initialText'] = '${widget.user.email}';
+    itemList[0]['editFunction'] = () => edit(0, context);
 
-  void fillInitialText() {
-    itemList[0]['initialText'] = 'Email gelecek';
-    itemList[0]['editFunction'] = () => edit(0);
+    itemList[1]['initialText'] = '${widget.user.phoneNumber ?? ''}';
+    itemList[1]['editFunction'] = () => edit(1, context);
 
-    itemList[1]['initialText'] = 'Telefon gelecek';
-    itemList[1]['editFunction'] = () => edit(1);
-
-    itemList[2]['initialText'] = 'Adres gelecek';
-    itemList[2]['editFunction'] = () => edit(2);
-
-    itemList[3]['initialText'] = 'İsim gelecek';
-    itemList[3]['editFunction'] = () => edit(3);
+    itemList[2]['initialText'] = '${widget.user.fullName}';
+    itemList[2]['editFunction'] = () => edit(2, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    fillInitialText();
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemCount: itemList.length,
@@ -67,10 +64,11 @@ class _InfoScreenState extends State<InfoScreen> {
     );
   }
 
-  Future<void> edit(int index) async {
-    var newText = await editText(itemList[index]['initialText'], context);
+  Future<void> edit(int index, BuildContext ctx) async {
+    var newText = await editText(itemList[index]['initialText'], ctx);
     setState(() {
       itemList[index]['initialText'] = newText;
     });
+    print(itemList[index]['initialText']);
   }
 }
